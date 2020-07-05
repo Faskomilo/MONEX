@@ -1,0 +1,97 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="../Style/indexSheet.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+          crossorigin="anonymous"></script>
+  <script src="../JS/indexJS.js"></script>
+</head>
+<body>
+  <div class="p-4 text-white" style="background-color:#1D334A">
+    <div class="row">
+      <div class="col-sm-1">
+        <img src="../Source/sdfas.png" width="100px"/>
+      </div>
+      <div class="col-sm-10" style="text-align:center">
+        <h1 >Máquina de cambio</h1>
+        <h1 >"MONEX"</h1>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  <div id="marginLR" class="jumbotron">
+    <h3>Bienvenid@ a la máquina de cambio "MONEX"</h3>
+    <hr />
+    <p>
+      En este sistema podrás obtener cambio de tu dinero de una forma efectiva y segura.
+    </p>
+    <p>
+      Para realizar esta operación, deberás seleccionar una cantiad y pulsar el botón "Continuar" para realizar la operación
+    </p>
+  </div>
+
+  <div class="divWall">
+    <br />
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+
+      <div class="col-sm-4" style="background-size: cover; background-position: center center; background-image:src(../Source/wall.jpg); transform: translate3d(0px, 0px, 0px);">
+        <div class="jumbotron">
+          <h5>Por favor, selecciona la cantidad que deseas cambiar.</h5>
+          <br />
+          <div id="marginLR">
+            <table class="table" style="text-align:center">
+              <tr>
+                <td>
+                  Monedas
+                </td>
+                <td>
+                  Billetes
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="radio" name="selectMoney" value="1"/>$1<br/>
+                  <input type="radio" name="selectMoney" value="2"/>$2<br/>
+                  <input type="radio" name="selectMoney" value="5"/>$5<br/>
+                  <input type="radio" name="selectMoney" value="10"/>$10<br/>
+                </td>
+                <td>
+                  <input type="radio" name="selectMoney" value="20"/>$20<br/>
+                  <input type="radio" name="selectMoney" value="50"/>$50<br/>
+                  <input type="radio" name="selectMoney" value="100"/>$100<br/>
+                  <input type="radio" name="selectMoney" value="200"/>$200<br/>
+                  <input type="radio" name="selectMoney" value="500"/>$500<br/>
+                  <input type="radio" name="selectMoney" value="1000"/>$1000<br/>
+                </td>
+              </tr>
+            </table>
+            <hr />
+            <p class="text-center"><button id="btnContinue" class="btn btn-success">Continuar</button></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+      </div>
+    </div>
+  </div>
+
+  <div class="p-3 text-white" style="background-color:#1D334A">
+    <p>
+      MONEX S.A. de C.V.
+    </p>
+  </div>
+
+  <div class="icon-bar">
+    <button id="botAnswer" class="botAnswer"><i class="fas fa-question-circle"></i></button>
+    <button id="botUnmute" onclick="mute();" class="botTools"><i class="fas fa-volume-up"></i></button>
+    <button id="botMute" onclick="unmute();" class="botTools" style="display:none"><i class="fas fa-volume-mute"></i></button>
+  </div>
+</body>
+</html>
