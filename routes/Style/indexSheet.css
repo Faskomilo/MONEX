@@ -1,0 +1,46 @@
+#marginLR{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.divWall {
+  background-image: url("../Source/wall.jpg");
+  background-attachment: fixed;
+}
+
+.icon-bar {
+  position:fixed;
+  top: 85%;
+  right:0%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.icon-bar button {
+  border:none;
+  border-top-left-radius:30px;
+  border-bottom-left-radius:30px;
+  margin-bottom: 5px;
+  display: block;
+  text-align: center;
+  padding: 20px;
+  width:80px;
+  transition: all 0.5s ease;
+  color: white;
+  font-size: 20px;
+}
+
+.icon-bar button:hover {
+  background-color: #000;
+}
+
+.botAnswer {
+  background: #F79F00;
+  color: white;
+}
+
+.botTools {
+  background: #55ACEE;
+  color: white;
+}
