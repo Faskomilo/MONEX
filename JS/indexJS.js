@@ -11,3 +11,13 @@ function unmute(){
   $('#botMute').hide();
   $('#botUnmute').show();
 }
+
+function juasjuas(){
+  if($('.radio_button').is(':checked'))
+  {
+    $('#modalAlert').modal('show');
+  }
+  else{
+    $('#modalErrorUser').modal('show');
+  }
+}

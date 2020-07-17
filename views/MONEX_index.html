@@ -1,0 +1,164 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MONEX</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+  <script src="../JS/indexJS.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="../Style/indexSheet.css">
+</head>
+<body>
+  <div class="p-4 text-white" style="background-color:#1D334A">
+    <div class="row">
+      <div class="col-sm-1">
+        <img src="../contents/img/logo.png" width="100px"/>
+      </div>
+      <div class="col-sm-10" style="text-align:center">
+        <h1 >Máquina de cambio</h1>
+        <h1 >"MONEX"</h1>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  <div id="marginLR" class="jumbotron">
+    <h3>Bienvenid@ a la máquina de cambio "MONEX"</h3>
+    <hr />
+    <p>
+      En este sistema podrás obtener cambio de tu dinero de una forma efectiva y segura.
+    </p>
+    <p>
+      Para realizar esta operación, deberás seleccionar una cantiad y pulsar el botón "Continuar" para realizar la operación
+    </p>
+  </div>
+
+  <div class="divWall">
+    <br />
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+
+      <div class="col-sm-4">
+        <div class="jumbotron">
+          <h5>Por favor, selecciona la cantidad que deseas cambiar.</h5>
+          <br />
+          <div id="marginLR">
+            <table class="table" style="text-align:center">
+              <tr>
+                <td>
+                  Monedas
+                </td>
+                <td>
+                  Billetes
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input class="radio_button" type="radio" name="selectMoney" value="1"/>$1<br/>
+                  <input class="radio_button" type="radio" name="selectMoney" value="2"/>$2<br/>
+                  <input class="radio_button" type="radio" name="selectMoney" value="5"/>$5<br/>
+                  <input class="radio_button" type="radio" name="selectMoney" value="10"/>$10<br/>
+                </td>
+                <td>
+                  <input class="radio_button" type="radio" name="selectMoney" value="20"/>$20<br/>
+                  <input class="radio_button" type="radio" name="selectMoney" value="50"/>$50<br/>
+                  <input class="radio_button" type="radio" name="selectMoney" value="100"/>$100<br/>
+                  <input class="radio_button" type="radio" name="selectMoney" value="200"/>$200<br/>
+                  <input class="radio_button" type="radio" name="selectMoney" value="500"/>$500<br/>
+                  <input class="radio_button" type="radio" name="selectMoney" value="1000"/>$1000<br/>
+                </td>
+              </tr>
+            </table>
+            <hr />
+            <p class="text-center"><button id="btnContinue" class="btn btn-success" onclick="juasjuas();">Continuar</button></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+      </div>
+    </div>
+  </div>
+
+  <div class="p-3 text-white" style="background-color:#1D334A">
+    <p>
+      MONEX S.A. de C.V.
+    </p>
+  </div>
+
+  <div class="icon-bar">
+    <button id="botAnswer" class="botAnswer"><i class="fas fa-question-circle"></i></button>
+    <button id="botUnmute" onclick="mute();" class="botTools"><i class="fas fa-volume-up"></i></button>
+    <button id="botMute" onclick="unmute();" class="botTools" style="display:none"><i class="fas fa-volume-mute"></i></button>
+  </div>
+
+  <!-- Modal bienvenida usuario -->
+  <div id="myModal" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="p-4">
+            <h1>Bienvenid@ a MONEX</h1>
+          </div>
+        </div>
+        <div class="modal-body">
+          <h4>Este sitio web está dedicado para realizar de forma fácil y segura el cambio de tu efectivo.</h4>
+          <h4>Da click en el botón de "Continuar" para realizar una operación.</h4>
+          <br />
+          <br />
+          <p style="text-align:center"><img width="30%" src="../contents/img/logo.png"/></p>
+        </div>
+        <div class="modal-footer">
+          <table style="width:100%">
+            <tr>
+              <td>
+                <a style="color:grey" href="adminLog.html"><i width="100px" class="fas fa-key fa-2x"></i></a>
+              <td style="text-align:right">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Continuar</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Modal alerta, seguro que desea continuar-->
+  <div id="modalAlert" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          Alerta
+        </div>
+        <div class="modal-body">
+          <p>¿Seguro que desea solicitar cambio de esa cantidad?</p>
+          <p style="text-align:right">
+            <button id="si" style="width:20%" class="btn btn-outline-primary">Si</button>
+            <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">No</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Modal error, selecciona una cantidad-->
+  <div id="modalErrorUser" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          Error
+        </div>
+        <div class="modal-body">
+          <p>Favor de seleccionar una cantidad.</p>
+          <p style="text-align:right">
+            <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
