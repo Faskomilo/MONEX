@@ -1,3 +1,7 @@
+$(document).ready(function(){
+  $('#myModal').modal('show');
+});
+
 function mute(){
   $('#botMute').show();
   $('#botUnmute').hide();
