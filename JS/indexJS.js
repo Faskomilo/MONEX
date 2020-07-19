@@ -21,3 +21,19 @@ function juasjuas(){
     $('#modalErrorUser').modal('show');
   }
 }
+
+function newOperation(){
+  $('#modalAlertLoop').modal('show');
+}
+
+function showChange(){
+  $('#modalSuccessCambio').modal('show');
+}
+
+function showEnd(){
+  $('#modalFin').modal('show');
+}
+
+function clearRB(){
+  alert("uncheck radio buton");
+}
