@@ -1,8 +1,10 @@
 //MONEX_INDEX.HTML
 $(document).ready(function(){
+    console.log("working js")
   $('#myModal').modal('show');
 
   $('#goToLogin').click(function(){
+    console.log("click ok")
     var origin  = window.location.origin;
     window.location.replace(origin + "/admin/login");
   });
