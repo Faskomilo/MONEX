@@ -1,12 +1,8 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
+from models._connector_ import Base
+from MainController import Queries
 from sqlalchemy import Column, Integer, String, Date, ForeignKey
 
-engine = create_engine(
-    'mysql+mysqlconnector://<user>:<password>@localhost:3306/<default_db>...')
-Base = declarative_base()
-
-class allmessages(Base):
+class allmessages(Base, Queries):
      __tablename__ = 'allmesages'
 
      id = Column(Integer, primary_key=True, nullable=False)

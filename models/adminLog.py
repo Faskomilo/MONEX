@@ -1,12 +1,8 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
+from models._connector_ import Base
+from MainController import Queries
 from sqlalchemy import Column, Integer, String, Date, ForeignKey
 
-engine = create_engine(
-    'mysql+mysqlconnector://<user>:<password>@localhost:3306/<default_db>...')
-Base = declarative_base()
-
-class AdminLog(Base):
+class AdminLog(Base, Queries):
      __tablename__ = 'adminlog'
 
      id = Column(Integer, primary_key=True, nullable=False)
