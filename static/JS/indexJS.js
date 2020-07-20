@@ -4,14 +4,13 @@ $(document).ready(function(){
   $('#myModal').modal('show');
 
   $('#goToLogin').click(function(){
-    console.log("click ok")
     var origin  = window.location.origin;
     window.location.replace(origin + "/admin/login");
   });
 
   $('#goToIndex').click(function(){
     var origin  = window.location.origin;
-    window.location.replace(origin + "/MONEX/index");
+    window.location.replace(origin + "/monex/index");
   });
 });
 
@@ -48,7 +47,7 @@ function getChange(){
 
   let xhr = new XMLHttpRequest();
   let origin  = window.location.origin;
-  xhr.open('POST', origin + '/MONEX/getChange');
+  xhr.open('POST', origin + '/monex/getChange');
   xhr.setRequestHeader('Content-Type','application/json');
   xhr.send(infoJson);
 

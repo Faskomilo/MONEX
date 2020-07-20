@@ -1,13 +1,14 @@
 from flask import Flask, request, render_template
-import importlib
 import os
 
 app = Flask(__name__)
 
+@app.route("/", methods=["GET","POST"])
+def listenRoot():
+    return render_template("monex_index.html"), 200
+
 @app.route("/<controller>/<action>", methods=["GET","POST"])
 def listen(controller, action):
-    print(action)
-    print(controller)
     if os.path.isfile("templates/" + controller + "_" + action + ".html"):
         return render_template(controller + "_" + action + ".html"), 200
     elif os.path.isfile("controllers/" + controller + ".py"):
