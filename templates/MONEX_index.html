@@ -74,7 +74,7 @@
               </tr>
             </table>
             <hr />
-            <p class="text-center"><button id="btnContinue" class="btn btn-success" onclick="juasjuas();">Continuar</button></p>
+            <p class="text-center"><button id="btnContinue" class="btn btn-success" onclick="continueChange();">Continuar</button></p>
           </div>
         </div>
       </div>
@@ -119,7 +119,7 @@
           <table style="width:100%">
             <tr>
               <td>
-                <a style="color:grey" href="admin_login.html"><i width="100px" class="fas fa-key fa-2x"></i></a>
+                <a id="goToLogin" role="button" style="color:grey"><i width="100px" class="fas fa-key fa-2x"></i></a>
               <td style="text-align:right">
                 <button type="button" class="btn btn-dark" data-dismiss="modal">Continuar</button>
               </td>
@@ -135,7 +135,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            
+
             <div class="p-2">
               <h1>Cambio</h1>
             </div>
@@ -148,7 +148,7 @@
             <br/>
             <p>Tu cambio es de:</p>
             <div class="jumbotron" style="margin-left: 10%; margin-right: 10%;">
-              
+
             </div>
           </div>
           <div class="modal-footer">
@@ -179,8 +179,8 @@
           <br/>
           <hr/>
           <br/>
-          <p style="text-align: center;"><a href="MONEX_index.html" style="width:20%;" class="btn btn-outline-primary">Inicio</a></p>
-         </div> 
+          <p style="text-align: center;"><a id="goToIndex" role="button" style="width:20%;" class="btn btn-outline-primary">Inicio</a></p>
+         </div>
        </div>
     </div>
   </div>
@@ -219,11 +219,11 @@
              <div class="p-1">
               <button id="answerDivWellcome" class="questionBot"><i style="color: #887400;" class="fas fa-question-circle"></i></button>
             </div>
-          </div> 
+          </div>
           <div class="modal-body">
             <p>¿Seguro que desea solicitar cambio de esa cantidad?</p>
             <p style="text-align:right">
-              <button id="si" style="width:20%" class="btn btn-outline-primary" data-dismiss="modal" onclick="showChange();">Si</button>
+              <button id="si" style="width:20%" class="btn btn-outline-primary" data-dismiss="modal" onclick="getChange();">Si</button>
               <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">No</button>
             </p>
           </div>
