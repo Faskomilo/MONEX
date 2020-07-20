@@ -1,3 +1,4 @@
+//MONEX_INDEX.HTML
 $(document).ready(function(){
   $('#myModal').modal('show');
 });
@@ -15,7 +16,7 @@ function unmute(){
 function juasjuas(){
   if($('.radio_button').is(':checked'))
   {
-    $('#modalAlert').modal('show');
+    $('#modalAlertContinue').modal('show');
   }
   else{
     $('#modalErrorUser').modal('show');
@@ -35,5 +36,21 @@ function showEnd(){
 }
 
 function clearRB(){
-  alert("uncheck radio buton");
+  $('input[type="radio"]').prop('checked', false);
+}
+
+//adminLog.HTML
+function continueLog(){
+  if($('#inputUser').val() == ''){
+    $('#errorUser').show();
+  }
+  else{
+    $('#errorUser').hide();
+  }
+  if($('#inputPasword').val() == ''){
+    $('#errorPasword').show();
+  }
+  else{
+    $('#errorPasword').hide();
+  }
 }
