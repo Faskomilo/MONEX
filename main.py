@@ -11,7 +11,7 @@ def listen(controller, action):
     if os.path.isfile("templates/" + controller + "_" + action + ".html"):
         return render_template(controller + "_" + action + ".html"), 200
     elif os.path.isfile("controllers/" + controller + ".py"):
-        class = importlib.import_module("")
+        pass
     else:
         return not_found_error(404)
 

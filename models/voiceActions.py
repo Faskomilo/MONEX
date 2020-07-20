@@ -5,9 +5,9 @@ from sqlalchemy import Column, Integer, String, Date, ForeignKey
 class VoiceAction(Base, Queries):
      __tablename__ = 'voiceaction'
 
-     id = Column(Integer, primary_key=True, nullable=False)
-     recording = Column(String, nullable=False)
+     id                 = Column(Integer, primary_key=True, nullable=False)
+     recording          = Column(String, nullable=False)
 
      def __repr__(self):
-        return "<User(recording='%s')>" % (
+        return "<VoiceAction(recording='%s')>" % (
                              self.recording)
