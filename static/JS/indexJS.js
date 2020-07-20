@@ -1,6 +1,16 @@
 //MONEX_INDEX.HTML
 $(document).ready(function(){
   $('#myModal').modal('show');
+
+  $('#goToLogin').click(function(){
+    var origin  = window.location.origin;
+    window.location.replace(origin + "/admin/login");
+  });
+
+  $('#goToIndex').click(function(){
+    var origin  = window.location.origin;
+    window.location.replace(origin + "/MONEX/index");
+  });
 });
 
 function mute(){
@@ -13,7 +23,7 @@ function unmute(){
   $('#botUnmute').show();
 }
 
-function juasjuas(){
+function continueChange(){
   if($('.radio_button').is(':checked'))
   {
     $('#modalAlertContinue').modal('show');
@@ -27,7 +37,24 @@ function newOperation(){
   $('#modalAlertLoop').modal('show');
 }
 
-function showChange(){
+function getChange(){
+  let quantity = document.querySelector('input[name="selectMoney"]:checked').value;
+
+  let infoJson = JSON.stringify({
+    'quantity' : quantity
+  });
+
+  let xhr = new XMLHttpRequest();
+  let origin  = window.location.origin;
+  xhr.open('POST', origin + '/MONEX/getChange');
+  xhr.setRequestHeader('Content-Type','application/json');
+  xhr.send(infoJson);
+
+  xhr.onload = function(){
+    let respuesta = JSON.parse(xhr.responseText);
+    console.log(respuesta);
+  }
+
   $('#modalSuccessCambio').modal('show');
 }
 
@@ -37,20 +64,4 @@ function showEnd(){
 
 function clearRB(){
   $('input[type="radio"]').prop('checked', false);
-}
-
-//adminLog.HTML
-function continueLog(){
-  if($('#inputUser').val() == ''){
-    $('#errorUser').show();
-  }
-  else{
-    $('#errorUser').hide();
-  }
-  if($('#inputPasword').val() == ''){
-    $('#errorPasword').show();
-  }
-  else{
-    $('#errorPasword').hide();
-  }
 }
