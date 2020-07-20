@@ -44,3 +44,8 @@
   background: #55ACEE;
   color: white;
 }
+
+.questionBot{
+  border:none;
+  background-color: unset;
+}

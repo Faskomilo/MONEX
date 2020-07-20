@@ -47,7 +47,7 @@
           <h5>Por favor, selecciona la cantidad que deseas cambiar.</h5>
           <br />
           <div id="marginLR">
-            <table class="table" style="text-align:center">
+            <table class="table" style="text-align: center;">
               <tr>
                 <td>
                   Monedas
@@ -104,6 +104,9 @@
           <div class="p-4">
             <h1>Bienvenid@ a MONEX</h1>
           </div>
+          <div class="p-4">
+            <button id="answerDivWellcome" class="questionBot"><i style="color: rgb(0, 72, 139);" class="fas fa-question-circle fa-2x"></i></button>
+          </div>
         </div>
         <div class="modal-body">
           <h4>Este sitio web está dedicado para realizar de forma fácil y segura el cambio de tu efectivo.</h4>
@@ -126,39 +129,172 @@
       </div>
     </div>
   </div>
-  <!--Modal alerta, seguro que desea continuar-->
-  <div id="modalAlert" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          Alerta
-        </div>
-        <div class="modal-body">
-          <p>¿Seguro que desea solicitar cambio de esa cantidad?</p>
-          <p style="text-align:right">
-            <button id="si" style="width:20%" class="btn btn-outline-primary">Si</button>
-            <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">No</button>
-          </p>
+
+    <!--Modal success, mostrar cambio-->
+    <div id="modalSuccessCambio" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            
+            <div class="p-2">
+              <h1>Cambio</h1>
+            </div>
+            <div class="p-3">
+              <button id="answerDivWellcome" class="questionBot"><i style="color: rgb(0, 72, 139);" class="fas fa-question-circle fa-2x"></i></button>
+            </div>
+          </div>
+          <div class="modal-body">
+            <h3 style="text-align: center;">¡Operación exitosa!</h3>
+            <br/>
+            <p>Tu cambio es de:</p>
+            <div class="jumbotron" style="margin-left: 10%; margin-right: 10%;">
+              
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button style="width:20%" class="btn btn-outline-primary" onclick="newOperation();" data-dismiss="modal">Ok</button>
+          </div>
         </div>
       </div>
     </div>
+
+  <!--Modal fin, la operación finalizó -->
+  <div id="modalFin" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+       <div class="modal-content">
+         <div class="modal-header">
+          <div class="p-4">
+            <h1>Operación finalizada</h1>
+          </div>
+           <div class="p-4">
+            <button id="answerDivWellcome" class="questionBot"><i style="color: rgb(0, 72, 139);" class="fas fa-question-circle fa-2x"></i></button>
+          </div>
+         </div>
+         <br/>
+         <div class="modal-body">
+           <h5>La operación ha sido completada con éxito y sin ningún problema.</h5>
+           <h5>Gracias por preferir usar MONEX.</h5>
+           <br/>
+           <h5>Presiona el botón de "Inicio" para ir a la pantalla de bienvenida o cierra la ventana.</h5>
+          <br/>
+          <hr/>
+          <br/>
+          <p style="text-align: center;"><a href="MONEX_index.html" style="width:20%;" class="btn btn-outline-primary">Inicio</a></p>
+         </div> 
+       </div>
+    </div>
   </div>
-  <!--Modal error, selecciona una cantidad-->
-  <div id="modalErrorUser" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+
+    <!--Modal alerta, nueva operación-->
+  <div id="modalAlertLoop" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header">
-          Error
+        <div class="modal-header" style="background-color: #fde767;">
+          <div class="p-0">
+            <h5>Alerta</h5>
+          </div>
+           <div class="p-1">
+            <button id="answerDivWellcome" class="questionBot"><i style="color: #887400;" class="fas fa-question-circle"></i></button>
+          </div>
         </div>
         <div class="modal-body">
-          <p>Favor de seleccionar una cantidad.</p>
+          <p><i class="far fa-question-circle-2x"></i> ¿Deseas realizar una nueva operación?</p>
           <p style="text-align:right">
-            <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
+            <button id="si" style="width:20%" class="btn btn-outline-primary" data-dismiss="modal" onclick="clearRB();">Si</button>
+            <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal" onclick="showEnd();">No</button>
           </p>
         </div>
       </div>
     </div>
   </div>
 
+    <!--Modal alerta, seguro que desea continuar-->
+    <div id="modalAlertContinue" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #fde767;">
+            <div class="p-0">
+              <h5>Alerta</h5>
+            </div>
+             <div class="p-1">
+              <button id="answerDivWellcome" class="questionBot"><i style="color: #887400;" class="fas fa-question-circle"></i></button>
+            </div>
+          </div> 
+          <div class="modal-body">
+            <p>¿Seguro que desea solicitar cambio de esa cantidad?</p>
+            <p style="text-align:right">
+              <button id="si" style="width:20%" class="btn btn-outline-primary" data-dismiss="modal" onclick="showChange();">Si</button>
+              <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">No</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Modal error, selecciona una cantidad-->
+    <div id="modalErrorUser" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #ff5656;">
+            <div class="p-0">
+              <h5>Error</h5>
+            </div>
+             <div class="p-1">
+              <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+            </div>
+          </div>
+          <div class="modal-body">
+            <p>&nbsp;&nbsp;&nbsp;Favor de seleccionar una cantidad.</p>
+            <p style="text-align:right">
+              <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!--Modal error, no cambio-->
+      <div id="modalErrorNoChange" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #ff5656;">
+              <div class="p-0">
+                <h5>Error</h5>
+              </div>
+               <div class="p-1">
+                <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+              </div>
+            </div>
+            <div class="modal-body">
+              <p>Lo sentimos, por el momento no disponemos de cambio para esa cantidad.</p>
+              <p style="text-align:right">
+                <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Modal error, fallo de sistema-->
+      <div id="modalErrorFail" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #ff5656;"></div>
+              <div class="p-0">
+                <h5>Error</h5>
+              </div>
+               <div class="p-1">
+                <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+              </div>
+            </div>
+            <div class="modal-body">
+              <p>¡Oops!, Algo falló al realizar la operación, intentalo más tarde.</p>
+              <p style="text-align:right">
+                <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 </html>
