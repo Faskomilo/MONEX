@@ -28,5 +28,34 @@ $(document).ready(function(){
     else{
       $('#errorPasword').hide();
     }
+
+    if($('#inputUser').val() != '' && $('#inputPasword').val() != ''){
+      let userName = $('#inputUser').val();
+      let userPassword = $('#inputPasword').val();
+      
+      let infoJson = JSON.stringify({
+        'userName' : userName,
+        'userPassword' : userPassword
+      });
+
+      let origin  = window.location.origin;
+
+      $.ajax({
+        type: "POST",
+        url: origin + '/admin/login',
+        contentType: "application/json; charset=utf-8",
+        data: infoJson,
+        dataType: "json",
+        success: function(response){
+          this.response = response;
+          if(this.response.success === "ok"){
+
+          }
+          else{
+            console.log("Error :b");
+          }
+        }
+      })
+    }
   }
   
