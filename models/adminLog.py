@@ -6,8 +6,8 @@ engine = create_engine(
     'mysql+mysqlconnector://<user>:<password>@localhost:3306/<default_db>...')
 Base = declarative_base()
 
-class User(Base):
-     __tablename__ = 'users'
+class AdminLog(Base):
+     __tablename__ = 'adminlog'
 
      id = Column(Integer, primary_key=True, nullable=False)
      idAdmin = Column(Integer,ForeignKey("admins.id"), nullable=False)

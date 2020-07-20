@@ -6,8 +6,8 @@ engine = create_engine(
     'mysql+mysqlconnector://<user>:<password>@localhost:3306/<default_db>...')
 Base = declarative_base()
 
-class User(Base):
-     __tablename__ = 'users'
+class allmessages(Base):
+     __tablename__ = 'allmesages'
 
      id = Column(Integer, primary_key=True, nullable=False)
      idVoiceAcion = Column(Integer,ForeignKey("voiceactions.id"), nullable=False)

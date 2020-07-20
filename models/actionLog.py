@@ -6,8 +6,8 @@ engine = create_engine(
     'mysql+mysqlconnector://<root>:<Mgogeta1234>@localhost:3306/<default_db>...')
 Base = declarative_base()
 
-class User(Base):
-     __tablename__ = 'users'
+class actionLog(Base):
+     __tablename__ = 'actionlog'
 
      id = Column(Integer, primary_key=True, nullable=False)
      idBill = Column(Integer,ForeignKey("bills.id"), nullable=False)

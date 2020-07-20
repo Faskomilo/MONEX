@@ -6,8 +6,8 @@ engine = create_engine(
     'mysql+mysqlconnector://<user>:<password>@localhost:3306/<default_db>...')
 Base = declarative_base()
 
-class User(Base):
-     __tablename__ = 'users'
+class VoiceNumbers(Base):
+     __tablename__ = 'voicenumbers'
 
      id = Column(Integer, primary_key=True, nullable=False)
      recording = Column(String, nullable=False)

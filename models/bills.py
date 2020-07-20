@@ -6,8 +6,8 @@ engine = create_engine(
     'mysql+mysqlconnector://<user>:<password>@localhost:3306/<default_db>...')
 Base = declarative_base()
 
-class User(Base):
-     __tablename__ = 'users'
+class Bills(Base):
+     __tablename__ = 'bills'
 
      id = Column(Integer, primary_key=True, nullable=False)
      money = Column(Integer, nullable=False)
