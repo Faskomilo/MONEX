@@ -5,10 +5,10 @@ from sqlalchemy import Column, Integer, String, Date, ForeignKey
 class Bills(Base, Queries):
      __tablename__ = 'bills'
 
-     id = Column(Integer, primary_key=True, nullable=False)
-     money = Column(Integer, nullable=False)
-     quantity = Column(Integer, nullable=False)
+     id              = Column(Integer, primary_key=True, nullable=False)
+     money           = Column(Integer, nullable=False)
+     quantity        = Column(Integer, nullable=False)
 
      def __repr__(self):
-        return "<User(money='%s', quantity='%s')>" % (
+        return "<Bills(money='%s', quantity='%s')>" % (
                              self.money, self.quantity)

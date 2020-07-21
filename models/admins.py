@@ -5,10 +5,10 @@ from sqlalchemy import Column, Integer, String, Date, ForeignKey
 class Admins(Base, Queries):
      __tablename__ = 'admins'
 
-     id = Column(Integer, primary_key=True, nullable=False)
-     username = Column(String, nullable=False)
-     quantity = Column(String, nullable=False)
+     id              = Column(Integer, primary_key=True, nullable=False)
+     username        = Column(String, nullable=False)
+     password        = Column(String, nullable=False)
 
      def __repr__(self):
-        return "<User(username='%s', quantity='%s')>" % (
-                             self.username, self.quantity)
+        return "<Admins(username='%s', password='%s')>" % (
+                             self.username, self.password)

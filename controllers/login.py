@@ -16,7 +16,7 @@ class login():
                 if admin is not None:
                     password = hashlib.sha224(password).hexdigest()
                     if password == admin.password:
-                        cookie = base64.urlsafe_b64encode(os.urandom(32)).rstrip("=").decode("ascii")
+                        cookie = base64.urlsafe_b64encode(os.urandom(32)).rstrip(b"=").decode("ascii")
                         response(redirect(origin + "/admin/index", 200))
                         response.set_cookie("Valid", cookie)
                         return response
