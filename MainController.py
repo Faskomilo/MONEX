@@ -16,3 +16,25 @@ class Queries():
         if filter is not None:
             query = query.filter(filter)
         return query.all()
+
+    def save(self):
+        try:
+            db.add(self)
+            db.commit()
+            return True
+        except Exception as exception:
+            db.rollback()
+            print("*** Error Saving ***")
+            print(exception)
+            return False
+    
+    def delete(self):
+        try:
+            db.delete(self)
+            db.commit()
+            return True
+        except Exception as exception:
+            db.rollback()
+            print("*** Error Deleting ***")
+            print(exception)
+            return False
