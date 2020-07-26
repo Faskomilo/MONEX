@@ -8,6 +8,7 @@ class Admins(Base, Queries):
      id              = Column(Integer, primary_key=True, nullable=False)
      username        = Column(String, nullable=False)
      password        = Column(String, nullable=False)
+     deleted         = Column(Integer, nullable=False, default=0)
 
      def __repr__(self):
         return "<Admins(username='%s', password='%s')>" % (

@@ -1,15 +1,17 @@
+drop database if exists monex;
 create database if not exists monex;
 
 use monex; 
 
 create table if not exists admins(
-id int(11) primary key not null, 
+id int(11) primary key not null auto_increment, 
 username varchar(15) not null,
-password varchar(30) not null
+password varchar(30) not null,
+deleted tinyint(1) not null default 0
 );
 
 create table if not exists adminlog(
-id int(11) primary key not null,
+id int(11) primary key not null auto_increment,
 idAdmin int(11) not null,
 date date not null,
 idBill int(11) not null,
@@ -17,38 +19,38 @@ action text not null
 );
 
 create table if not exists bills(
-id int(11) primary key not null,
+id int(11) primary key not null auto_increment,
 money int(11) not null,
 quantity int(11) not null
 );
 
 create table if not exists actionlog(
-id int(11) primary key not null,
+id int(11) primary key not null auto_increment,
 idBill int(11) not null,
 billsGiven varchar(50) not null,
 date date not null
 );
 
 create table if not exists voicebills(
-id int(11) primary key not null,
+id int(11) primary key not null auto_increment,
 recording text not null,
 idBill int(11) not null
 );
 
 create table if not exists allmessages(
-id int(11) primary key not null,
+id int(11) primary key not null auto_increment,
 idVoiceAction int(11) not null,
 idVoiceNumber int(11) not null,
 idVoiceBill int(11) not null
 );
 
 create table if not exists voiceactions(
-id int(11) primary key not null,
+id int(11) primary key not null auto_increment,
 recording text not null
 );
 
 create table if not exists voicenumbers(
-id int(11) primary key not null,
+id int(11) primary key not null auto_increment,
 recording text not null
 );
 
@@ -71,3 +73,5 @@ alter table allmessages add constraint fk_allmessages_voiceactions foreign key(i
 alter table allmessages add constraint fk_allmessages_voicenumbers foreign key(idVoiceNumber) references voicenumbers(id);
 
 alter table sessions add constraint fk_session_admin foreign key(idAdmin) references admins(id);
+
+Insert into admins(username, password) values("oscar", "asdad");
