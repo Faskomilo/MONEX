@@ -1,5 +1,14 @@
 {% extends "admin_index.html" %}
 {% block content %}
-    <h3>Movimientos de administrador</h3>
-    <hr/>
+<html>
+    <head>
+        <title>adminUserAction</title>
+        <script src="/static/JS/admin_adminAction.js"></script>
+    </head>
+    <body>
+        <h3>Movimientos de administrador</h3>
+        <hr/>
+        <table id="tableAdminAction" class="table table-bordered"></table>
+    </body>
+</html>
 {% endblock %}
