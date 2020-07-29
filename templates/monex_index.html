@@ -199,7 +199,14 @@
           </div>
         </div>
         <div class="modal-body">
-          <p><i class="far fa-question-circle-2x"></i> ¿Deseas realizar una nueva operación?</p>
+          <div class="row">
+            <div class="col-1">
+                <i style="color: #dbba00;" class="fas fa-exclamation-circle fa-3x"></i>
+            </div>
+            <div class="col" style="padding:2%; margin-left: 5%;">
+              <p>¿Deseas realizar una nueva operación?</p>
+            </div>
+          </div>
           <p style="text-align:right">
             <button id="si" style="width:20%" class="btn btn-outline-primary" data-dismiss="modal" onclick="clearRB();">Si</button>
             <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal" onclick="showEnd();">No</button>
@@ -222,7 +229,14 @@
             </div>
           </div>
           <div class="modal-body">
-            <p>¿Seguro que desea solicitar cambio de esa cantidad?</p>
+            <div class="row">
+              <div class="col-1">
+                  <i style="color: #dbba00;" class="fas fa-exclamation-circle fa-3x"></i>
+              </div>
+              <div class="col" style="padding:2%; margin-left: 5%;">
+                <p>¿Seguro que desea solicitar cambio de esa cantidad?</p>
+              </div>
+            </div>
             <p style="text-align:right">
               <button id="si" style="width:20%" class="btn btn-outline-primary" data-dismiss="modal" onclick="getChange();">Si</button>
               <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">No</button>
@@ -245,7 +259,14 @@
             </div>
           </div>
           <div class="modal-body">
-            <p>&nbsp;&nbsp;&nbsp;Favor de seleccionar una cantidad.</p>
+            <div class="row">
+              <div class="col-1">
+                  <i style="color: #e20000;" class="fas fa-times-circle fa-3x"></i>
+              </div>
+              <div class="col" style="padding:2%; margin-left: 5%;">
+                <p>Favor de seleccionar una cantidad.</p>
+              </div>
+          </div>
             <p style="text-align:right">
               <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
             </p>
@@ -267,7 +288,14 @@
               </div>
             </div>
             <div class="modal-body">
-              <p>Lo sentimos, por el momento no disponemos de cambio para esa cantidad.</p>
+              <div class="row">
+                <div class="col-1">
+                    <i style="color: #e20000;" class="fas fa-times-circle fa-3x"></i>
+                </div>
+                <div class="col" style="padding:1%; margin-left: 5%;">
+                  <p>Lo sentimos, por el momento no disponemos de cambio para esa cantidad.</p>
+                </div>
+              </div>
               <p style="text-align:right">
                 <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
               </p>
@@ -280,7 +308,7 @@
       <div id="modalErrorFail" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
-            <div class="modal-header" style="background-color: #ff5656;"></div>
+            <div class="modal-header" style="background-color: #ff5656;">
               <div class="p-0">
                 <h5>Error</h5>
               </div>
@@ -289,7 +317,14 @@
               </div>
             </div>
             <div class="modal-body">
-              <p>¡Oops!, Algo falló al realizar la operación, intentalo más tarde.</p>
+                <div class="row">
+                    <div class="col-1">
+                        <i style="color: #e20000;" class="fas fa-times-circle fa-3x"></i>
+                    </div>
+                    <div class="col" style="padding:1%; margin-left: 5%;">
+                        ¡Oops!, Algo falló al realizar la operación, intentalo más tarde.
+                    </div>
+                </div>
               <p style="text-align:right">
                 <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
               </p>

@@ -49,3 +49,10 @@
   border:none;
   background-color: unset;
 }
+
+.resourceInput{
+  border:none;
+  background-color: unset;
+  width: 35%;
+  text-align: center;
+}

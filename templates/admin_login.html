@@ -74,5 +74,34 @@
     <button id="botUnmute" onclick="mute();" class="botTools"><i class="fas fa-volume-up"></i></button>
     <button id="botMute" onclick="unmute();" class="botTools" style="display:none"><i class="fas fa-volume-mute"></i></button>
   </div>
+
+  <!--Modal error, inicio de sesión-->
+  <div id="modalErrorLogin" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #ff5656;">
+          <div class="p-0">
+            <h5>Error</h5>
+          </div>
+           <div class="p-1">
+            <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+          </div>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-1">
+                    <i style="color: #e20000;" class="fas fa-times-circle fa-3x"></i>
+                </div>
+                <div class="col" style="padding:1%; margin-left: 5%;">
+                    Favor de ingresar un nombre de usuario y contraseña correctos.
+                </div>
+            </div>
+          <p style="text-align:right">
+            <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
