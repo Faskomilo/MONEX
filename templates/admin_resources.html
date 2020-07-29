@@ -1,0 +1,315 @@
+{% extends "admin_index.html" %}
+{% block content %}
+
+<html>
+    <head>
+        <title>adminResources</title>
+        <script src="/static/JS/admin_resources.js"></script>
+    </head>
+    <body>
+        <h3>Modificar recursos</h3>
+        <hr/>
+        <p>Aquí podrás modificar las cantidades de los recursos existentes de la máquina de cambio.</p>
+        <br/>
+        <div id="marginLR">
+            <div class="row">
+                <div class="col-7">
+                    <div class="jumbotron" style="background-color: rgb(228, 228, 228);">
+                        <p>Por favor, selecciona la cantidad que deseas modificar:</p>
+                        <br/>
+                        <div>
+                            <div class="row">
+                                <div class="col">
+                                    <div style="margin-left: 20%;">
+                                        <p>Concepto</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div style="margin-left: 20%;">
+                                        <p>Monto actual</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input class="radio_button" type="radio" name="selectMoney" value="1"/>$1<br/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input id="quantity1" class="resourceInput" disabled="true" value="0"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input class="radio_button" type="radio" name="selectMoney" value="2"/>$2<br/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input id="quantity2" class="resourceInput" disabled="true" value="0"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input class="radio_button" type="radio" name="selectMoney" value="5"/>$5<br/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input id="quantity5" class="resourceInput" disabled="true" value="0"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input class="radio_button" type="radio" name="selectMoney" value="10"/>$10<br/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input id="quantity10" class="resourceInput" disabled="true" value="0"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input class="radio_button" type="radio" name="selectMoney" value="20"/>$20<br/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input id="quantity20" class="resourceInput" disabled="true" value="0"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input class="radio_button" type="radio" name="selectMoney" value="50"/>$50<br/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input id="quantity50" class="resourceInput" disabled="true" value="0"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input class="radio_button" type="radio" name="selectMoney" value="100"/>$100<br/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input id="quantity100" class="resourceInput" disabled="true" value="0"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input class="radio_button" type="radio" name="selectMoney" value="200"/>$200<br/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input id="quantity200" class="resourceInput" disabled="true" value="0"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input class="radio_button" type="radio" name="selectMoney" value="500"/>$500<br/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input id="quantity500" class="resourceInput" disabled="true" value="0"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input class="radio_button" type="radio" name="selectMoney" value="1000"/>$1000<br/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div style="margin-left: 30%;">
+                                        <input id="quantity1000" class="resourceInput" disabled="true" value="0"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="jumbotron" style="background-color: rgb(228, 228, 228);">
+                        <p>Ingrese la nueva cantidad:</p>
+                        <input class="form-control" placeholder="Nueva cantidad"></input>
+                        <br/>
+                        <button class="btn btn-outline-success" style="width: 100%;">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      <!--Modal Alerta, fin de operación-->
+      <div id="modalAlertOperationSuccess" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #75ff70;">
+              <div class="p-0">
+                <h5>Fin de la opeación</h5>
+              </div>
+               <div class="p-1">
+                <button id="answerDivWellcome" class="questionBot"><i style="color: #007500;" class="fas fa-question-circle"></i></button>
+              </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-1">
+                        <i style="color: #08e400;" class="fas fa-check-circle fa-3x"></i>
+                    </div>
+                    <div class="col" style="padding:2%; margin-left: 5%;">
+                        <p>Operación realizada exitosamente</p>
+                    </div>
+                </div>
+              <p style="text-align:right">
+                <button style="width:20%" class="btn btn-outline-success" data-dismiss="modal">Ok</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--Modal alerta, seguro que desea continuar-->
+    <div id="modalAlertContinue" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #fde767;">
+              <div class="p-0">
+                <h5>Alerta</h5>
+              </div>
+               <div class="p-1">
+                <button id="answerDivWellcome" class="questionBot"><i style="color: #887400;" class="fas fa-question-circle"></i></button>
+              </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-1">
+                        <i style="color: #dbba00;" class="fas fa-exclamation-circle fa-3x"></i>
+                    </div>
+                    <div class="col" style="padding:1%; margin-left: 5%;">
+                        <p>¿Seguro que desea modificar la cantidad de esa denominación?</p>
+                    </div>
+                </div>
+              <p style="text-align:right">
+                <button id="si" style="width:20%" class="btn btn-outline-primary" data-dismiss="modal">Si</button>
+                <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">No</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!--Modal error, cantidad erronea-->
+      <div id="errorWrongQuantityAdmin" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #ff5656;">
+              <div class="p-0">
+                <h5>Error</h5>
+              </div>
+               <div class="p-1">
+                <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+              </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-1">
+                        <i style="color: #e20000;" class="fas fa-times-circle fa-3x"></i>
+                    </div>
+                    <div class="col" style="padding:2%; margin-left: 5%;">
+                        <p>Cantidad ingresada incorrecta.</p>
+                    </div>
+                </div>
+              <p style="text-align:right">
+                <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
+              </p>
+            </div>
+          </div>
+        </div>
+    </div>
+  
+      <!--Modal error, selecciona una cantidad-->
+      <div id="modalErrorChoose" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #ff5656;">
+              <div class="p-0">
+                <h5>Error</h5>
+              </div>
+               <div class="p-1">
+                <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+              </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-1">
+                        <i style="color: #e20000;" class="fas fa-times-circle fa-3x"></i>
+                    </div>
+                    <div class="col" style="padding:2%; margin-left: 5%;">
+                        <p>Favor de seleccionar una cantidad.</p>
+                    </div>
+                </div>
+              <p style="text-align:right">
+                <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Modal error, selecciona una cantidad-->
+      <div id="modalErrorFail" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #ff5656;">
+              <div class="p-0">
+                <h5>Error</h5>
+              </div>
+               <div class="p-1">
+                <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+              </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-1">
+                        <i style="color: #e20000;" class="fas fa-times-circle fa-3x"></i>
+                    </div>
+                    <div class="col" style="padding:1%; margin-left: 5%;">
+                        ¡Oops!, Algo falló al realizar la operación, intentalo más tarde.
+                    </div>
+                </div>
+              <p style="text-align:right">
+                <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
+
+{% endblock %}

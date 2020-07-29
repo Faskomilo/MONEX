@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="/static/libraries/JQuery/dist/jquery.min.js"></script>
+        <script src="/static/libraries/Bootstrap 4.5.0/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="/static/libraries/Bootstrap 4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/libraries/fontawesome-free-5.14.0-web/css/all.css">
+      
+        <script src="/static/JS/admin_index.js"></script>
+        <link rel="stylesheet" href="/static/Style/indexSheet.css">
+      </head>
+    <body>
+        <div class="p-4 text-white" style="background-color:#1D334A">
+            <div class="row">
+              <div class="col-sm-1">
+                <img src="/static/contents/img/logo.png" width="100px"/>
+              </div>
+              <div class="col-sm-10" style="text-align:center">
+                <h1 >Modo administrador</h1>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div id="marginLR" class="jumbotron">
+            <h3>Bienvenid@ al modo administrador</h3>
+            <br/>
+            <p>Aquí podrás observar distintos mensajes los cuáles indican los cambios nevesarios a realizar para los recursos de la máquina de cambio.</p>
+            <p>De igual manera, tendrás acceso a la información y modificaciónde los recursos del sistema y a los registros de movimientos realizados tanto por los usuarios como por el administrador.</p>
+          </div>
+          
+          <div id="marginLR">
+            <div class="row">
+                <div class="col-4">
+                    <div class="jumbotron" style="text-align: center;">
+                        <button id="goToMessages" class="btn btn-outline-primary" style="width: 100%;">Mensajes</button>
+                        <br/>
+                        <br/>
+                        <button id="goToResources" class="btn btn-outline-primary" style="width: 100%;">Modificar recursos</button>
+                        <br/>
+                        <br/>
+                        <button id="goToUserAction" class="btn btn-outline-primary" style="width: 100%;">Movimientos de usuarios</button>
+                        <br/>
+                        <br/>
+                        <button id="goToAdminAction" class="btn btn-outline-primary" style="width: 100%;">Movimientos de administradores</button>
+                        <br/>
+                        <br/>
+                        <hr/>
+                        <button id="goToMonex" class="btn btn-warning" style="width: 100%;">Salir</button>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="jumbotron">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="p-3 text-white" style="background-color:#1D334A">
+            <p>
+              MONEX S.A. de C.V.
+            </p>
+          </div>
+
+          <div class="icon-bar">
+            <button id="botAnswer" class="botAnswer"><i class="fas fa-question-circle"></i></button>
+            <button id="botUnmute" onclick="mute();" class="botTools"><i class="fas fa-volume-up"></i></button>
+            <button id="botMute" onclick="unmute();" class="botTools" style="display:none"><i class="fas fa-volume-mute"></i></button>
+          </div>
+    </body>
+</html>
