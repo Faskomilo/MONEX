@@ -12,7 +12,9 @@ from MainController import Controller
 
 class login(Controller):
     def login(self):
-        invalidCredentials = False
+        success = "ko"
+        redirect = self.request.url_root+"admin/login"
+        _cookie = {"ERROR": "NOT AUTHORIZED"}
         if self.request.method == "POST":
             _request = self.request.json
             _username = _request["username"]
@@ -28,12 +30,14 @@ class login(Controller):
                         _session = Sessions(cookie=_cookie,
                                             idAdmin=_admin.id,
                                             date=datetime.datetime.utcnow())
-                        response = make_response(redirect(self.request.url_root+"admin/messages"))
-                        print(self.request.url_root+"admin/messages")
-                        response.set_cookie("SID", _cookie)
-                        return response
-            invalidCredentials = True
-        response = make_response(redirect(self.request.url_root+"admin/login"))
-        if invalidCredentials:
-            response.set_cookie("ERROR", "NOT AUTHORIZED")
+                        success = "ok"
+                        redirect = self.request.url_root+"admin/messages"
+                        _cookie = {"SID": _cookie}
+        response = {"success": success,
+                    "data":{
+                        "redirect":redirect,
+                        "cookie":_cookie
+                    }}
+        print(response)
+        response = make_response(response)
         return response

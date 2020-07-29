@@ -4,6 +4,17 @@ $(document).ready(function(){
       var origin   = window.location.origin;
       window.location.replace(origin + "/monex/index");
     });
+    $('#inputUser').focus(function(){
+      $('#errorEmptyUser').hide();
+      $('#errorEmptyPasword').hide();
+      $("#errorInvalidCredentials").hide();
+    })
+    $('#inputPasword').focus(function(){
+      $('#errorEmptyUser').hide();
+      $('#errorEmptyPasword').hide();
+      $("#errorInvalidCredentials").hide();
+    })
+
   });
   
   function mute(){
@@ -18,16 +29,16 @@ $(document).ready(function(){
   
   function continueLog(){
     if($('#inputUser').val() == ''){
-      $('#errorUser').show();
+      $('#errorEmptyUser').show();
     }
     else{
-      $('#errorUser').hide();
+      $('#errorEmptyUser').hide();
     }
     if($('#inputPasword').val() == ''){
-      $('#errorPasword').show();
+      $('#errorEmptyPasword').show();
     }
     else{
-      $('#errorPasword').hide();
+      $('#errorEmptyPasword').hide();
     }
 
     if($('#inputUser').val() != '' && $('#inputPasword').val() != ''){
@@ -39,8 +50,6 @@ $(document).ready(function(){
         'password' : password
       });
 
-      let origin  = window.location.origin;
-
       $.ajax({
         type: "POST",
         url: origin + '/login/login',
@@ -48,16 +57,12 @@ $(document).ready(function(){
         data: infoJson,
         dataType: "json",
         success: function(response){
-          console.log(response)
-          this.response = 
-          {
-            
-          };
+          this.response = response;
           if(this.response.success === "ok"){
-
+            
           }
           else{
-            console.log("Error");
+            $('#errorInvalidCredentials').show();
           }
         }
       })

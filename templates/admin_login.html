@@ -47,16 +47,19 @@
       <br/>
       <label for="inputUser"><h5>Nombre de usuario</h5></label>
       <input type="text" class="form-control" id="inputUser" placeholder="Usuario" required>
-      <div id="errorUser" class="alert alert-danger" role="alert" style="display: none;">
+      <div id="errorEmptyUser" class="alert alert-danger" role="alert" style="display: none;">
         Favor de insertar un nombre de usuario
       </div>
       <br/>
       <label for="inputPasword"><h5>Contraseña</h5></label>
       <input type="password" class="form-control" id="inputPasword" placeholder="Contraseña" required>
-      <div id="errorPasword" class="alert alert-danger" role="alert" style="display: none;">
+      <div id="errorEmptyPasword" class="alert alert-danger" role="alert" style="display: none;">
         Favor de insertar una contraseña
       </div>
       <br/>
+      <div id="errorInvalidCredentials" class="alert alert-danger" role="alert" style="display: none;">
+        Credenciales no válidas, inténtelo de nuevo
+      </div>
       <hr/>
       <br/>
       <p style="text-align: center;"> <button style="width: 30%;" class="btn btn-outline-success" onclick="continueLog();">Continuar</button> </p>
