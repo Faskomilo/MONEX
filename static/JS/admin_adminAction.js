@@ -10,11 +10,10 @@ $(document).ready(function(){
             this.response = response;
 
             if(this.response.success === "ok"){
-                $('#tableAdminAction').empty();
-                $('#tableAdminAction').append('<tr><th>Id</th><th>Usuario</th><th>Denominación seleccionada</th><th>Acción</th><th>Fecha y hora</th></tr>');
+                $('#tbodyUserAction').empty();
 
                 for(let registry in this.response.data){
-                    $('#tableUserAction').append('<tr>' +
+                    $('#tbodyUserAction').append('<tr>' +
                                                  '<td>'+ this.response.data[registry].id +'</td>' +
                                                  '<td>'+ this.response.data[registry].username +'</td>' +
                                                  '<td>'+ this.response.data[registry].Bill +'</td>' +
@@ -23,6 +22,8 @@ $(document).ready(function(){
                                                  '</tr>'
                                                 );
                 }
+
+                $('#tableUserAction').DataTable();
             }
         }
     })

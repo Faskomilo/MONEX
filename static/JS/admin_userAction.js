@@ -1,6 +1,4 @@
-$(document).ready(function(){
-    $('#tableUserAction').DataTable();
-/*
+$(document).ready(function(){   
     let origin = window.location.origin;
 
     $.ajax({
@@ -12,11 +10,10 @@ $(document).ready(function(){
             this.response = response;
 
             if(this.response.success === "ok"){
-                $('#tableUserAction').empty();
-                $('#tableUserAction').append('<tr><th>Id</th><th>Denominación seleccionada</th><th>Cambio entregado</th><th>Fecha y hora</th></tr>');
+                $('#tbodyUserAction').empty();
 
                 for(let registry in this.response.data){
-                    $('#tableUserAction').append('<tr>' +
+                    $('#tbodyUserAction').append('<tr>' +
                                                  '<td>'+ this.response.data[registry].id +'</td>' +
                                                  '<td>'+ this.response.data[registry].bill +'</td>' +
                                                  '<td>'+ this.response.data[registry].billsGiven +'</td>' +
@@ -24,7 +21,9 @@ $(document).ready(function(){
                                                  '</tr>'
                                                 );
                 }
+
+                $('#tableUserAction').DataTable();
             }
         }
-    })*/
+    })
 });
