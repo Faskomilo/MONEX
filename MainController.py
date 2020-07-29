@@ -38,3 +38,9 @@ class Queries():
             print("*** Error Deleting ***")
             print(exception)
             return False
+
+class Controller:
+    request = None
+
+    def __init__(self, request):
+        self.request = request

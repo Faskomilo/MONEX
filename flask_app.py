@@ -1,18 +1,27 @@
-from flask import Flask, request, render_template
+#!/usr/bin/env python
+from flask import Flask, request, render_template, make_response, redirect
 import os
+import importlib
+import models
+import controllers
 
 app = Flask(__name__)
 
 @app.route("/", methods=["GET","POST"])
 def listenRoot():
-    return render_template("monex_index.html"), 200
+    return make_response(redirect(request.url_root + "monex/index"))
 
 @app.route("/<controller>/<action>", methods=["GET","POST"])
 def listen(controller, action):
     if os.path.isfile("templates/" + controller + "_" + action + ".html"):
         return render_template(controller + "_" + action + ".html"), 200
     elif os.path.isfile("controllers/" + controller + ".py"):
-        pass
+        importedController = importlib.import_module("controllers." + controller)
+        classImportedController = getattr(importedController, controller)
+        instanceImportedClass = classImportedController(request)
+        execute = getattr(instanceImportedClass, action, None)
+        if execute:
+            return execute()
     else:
         return not_found_error(404)
 

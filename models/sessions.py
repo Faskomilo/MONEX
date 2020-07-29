@@ -6,8 +6,8 @@ class Sessions(Base, Queries):
      __tablename__ = 'sessions'
 
      cookie             = Column(String, primary_key=True, nullable=False)
-     idAdmin            =  Column(Integer,ForeignKey("admins.id"), nullable=False)
-     date               = Column(Integer, nullable=False)
+     idAdmin            = Column(Integer,ForeignKey("admins.id"), nullable=False)
+     date               = Column(Date, nullable=False)
 
      def __repr__(self):
         return "<Sessions(cookie='%s', idAdmin='%s', date='%s')>" % (

@@ -30,23 +30,24 @@ $(document).ready(function(){
     }
 
     if($('#inputUser').val() != '' && $('#inputPasword').val() != ''){
-      let userName = $('#inputUser').val();
-      let userPassword = $('#inputPasword').val();
+      let username = $('#inputUser').val();
+      let password = $('#inputPasword').val();
       
       let infoJson = JSON.stringify({
-        'userName' : userName,
-        'userPassword' : userPassword
+        'username' : username,
+        'password' : password
       });
 
       let origin  = window.location.origin;
 
       $.ajax({
         type: "POST",
-        url: origin + '/admin/login',
+        url: origin + '/login/login',
         contentType: "application/json; charset=utf-8",
         data: infoJson,
         dataType: "json",
         success: function(response){
+          console.log(response)
           this.response = response;
           if(this.response.success === "ok"){
 

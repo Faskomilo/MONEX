@@ -22,6 +22,17 @@ class ActionHandler():
                         else:
                             print("** Error: Password must be over 5 characters **")
                             sys.exit()
+                        _username = args.NewUsername
+                        if len(_username) < 5:
+                            if args.verbose:
+                                usernameOK = False
+                                while not usernameOK:
+                                    _username = input("Please, enter a valid username over 5 characters: ")
+                                    if len(_username) > 5:
+                                        usernameOK = True
+                            else:
+                                print("** Error: New Username must be over 5 characters **")
+                                sys.exit()
                     _newAdminPassword = hashlib.sha224(str(args.password).encode('utf-8')).hexdigest()
                     _newAdmin = Admins(username = args.username,
                                     password = _newAdminPassword)
