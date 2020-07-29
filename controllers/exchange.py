@@ -6,7 +6,8 @@ class exchange(Controller):
     def exchange(self):
         if self.request.method == "POST":
             request = self.request.json
-            bills = Bills.getAll()
-            for x in bills:
-                print(x)  
+            billToExchange = request.billToExchange
+            billsInDB = Bills.getAll()
+            for x in billsInDB:
+                print(x.id)  
 
