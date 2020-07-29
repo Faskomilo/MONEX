@@ -1,6 +1,6 @@
 from models._connector_ import Base
 from MainController import Queries
-from sqlalchemy import Column, Integer, String, Date, ForeignKey
+from sqlalchemy import Column, Integer, String
 
 class VoiceNumbers(Base, Queries):
      __tablename__ = 'voicenumbers'

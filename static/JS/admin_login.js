@@ -49,7 +49,10 @@ $(document).ready(function(){
         dataType: "json",
         success: function(response){
           console.log(response)
-          this.response = response;
+          this.response = 
+          {
+            
+          };
           if(this.response.success === "ok"){
 
           }

@@ -1,13 +1,13 @@
 from models._connector_ import Base
 from MainController import Queries
-from sqlalchemy import Column, Integer, String, Date, ForeignKey
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 
 class Sessions(Base, Queries):
      __tablename__ = 'sessions'
 
      cookie             = Column(String, primary_key=True, nullable=False)
      idAdmin            = Column(Integer,ForeignKey("admins.id"), nullable=False)
-     date               = Column(Date, nullable=False)
+     date               = Column(DateTime, nullable=False)
 
      def __repr__(self):
         return "<Sessions(cookie='%s', idAdmin='%s', date='%s')>" % (

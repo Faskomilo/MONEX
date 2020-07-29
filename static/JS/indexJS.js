@@ -45,16 +45,26 @@ function getChange(){
     'quantity' : quantity
   });
 
-  let xhr = new XMLHttpRequest();
-  let origin  = window.location.origin;
-  xhr.open('POST', origin + '/monex/getChange');
-  xhr.setRequestHeader('Content-Type','application/json');
-  xhr.send(infoJson);
+  $.ajax({
+    type: "POST",
+    url: origin + '/monex/getChange',
+    contentType: "application/json; charset=utf-8",
+    data: infoJson,
+    dataType: "json",
+    success: function(response){
+      console.log(response)
+      this.response = 
+      {
+        
+      };
+      if(this.response.success === "ok"){
 
-  xhr.onload = function(){
-    let respuesta = JSON.parse(xhr.responseText);
-    console.log(respuesta);
-  }
+      }
+      else{
+          console.log("Error");
+      }
+    }
+  })
 
   $('#modalSuccessCambio').modal('show');
 }
