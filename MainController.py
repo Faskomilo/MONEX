@@ -1,4 +1,5 @@
-from  models._connector_ import db_session as db
+from models._connector_ import db_session as db
+import datetime
 
 class Queries():
     @classmethod
@@ -46,4 +47,22 @@ class Controller:
         self.request = request
 
 class Authorization:
-    pass
+    @staticmethod
+    def Authorize(self, cookie, refresh):
+        def privilege(func):
+            def wrapper(**kwargs):
+                from models.Sessions import Sessions
+                _session = Sessions.get(Sessions.cookie == cookie)
+                if _session is not None:
+                    if refresh:
+                        _session.date = datetime.datetime.utcnow()
+                        _session.save()
+                    del Sessions
+                    return func(self, _session.idAdmin, **kwargs)
+                else:
+                    json = {
+                        "success":"ko",
+                        "message":"UNATHORIZED"
+                    }
+                    del Sessions
+                    return json

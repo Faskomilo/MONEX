@@ -39,24 +39,21 @@ function newOperation(){
 }
 
 function getChange(){
-  let quantity = document.querySelector('input[name="selectMoney"]:checked').value;
+  let billToExchange = document.querySelector('input[name="selectMoney"]:checked').value;
 
   let infoJson = JSON.stringify({
-    'quantity' : quantity
+    'billToExchange' : billToExchange
   });
 
   $.ajax({
     type: "POST",
-    url: origin + '/monex/getChange',
+    url: origin + '/exchange/exchange',
     contentType: "application/json; charset=utf-8",
     data: infoJson,
     dataType: "json",
     success: function(response){
       console.log(response)
-      this.response = 
-      {
-        
-      };
+      this.response = response;
       if(this.response.success === "ok"){
 
       }
