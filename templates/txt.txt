@@ -1,0 +1,3 @@
+send tables to admin/userAction, admin/adminAction
+make CRUD on admin/messages
+make js to resources

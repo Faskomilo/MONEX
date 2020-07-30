@@ -5,11 +5,14 @@ from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 class AdminLog(Base, Queries):
      __tablename__ = 'adminlog'
 
-     id = Column(Integer, primary_key=True, nullable=False)
-     idAdmin      = Column(Integer,ForeignKey("admins.id"), nullable=False)
-     date         = Column(DateTime, nullable=False)
-     idBill       = Column(Integer,ForeignKey("bills.id"), nullable=False)
-     action       = Column(String, nullable=False)
+     id                    = Column(Integer, primary_key=True, nullable=False)
+     idAdmin               = Column(Integer,ForeignKey("admins.id"), nullable=False)
+     date                  = Column(DateTime, nullable=False)
+     idBill                = Column(Integer,ForeignKey("bills.id"), nullable=False)
+     quantityBills         = Column(Integer, nullable=False)
+     beforeQuantityBills   = Column(Integer, nullable=False)
+     afterQuantityBills    = Column(Integer, nullable=False)
+     action                = Column(String, nullable=False)
 
 
      def __repr__(self):

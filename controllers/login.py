@@ -28,6 +28,7 @@ class login(Controller):
                         _session = Sessions(cookie=_cookie,
                                             idAdmin=_admin.id,
                                             date=datetime.datetime.utcnow())
+                        _session.save()
                         success = "ok"
                         message = "login ok"
                         redirect = "admin/messages"
@@ -37,6 +38,7 @@ class login(Controller):
                     "data":{
                         "redirect":redirect,
                         "cookie":_cookie
-                    }}
+                        }
+                    }
         response = make_response(response)
         return response
