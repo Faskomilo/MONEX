@@ -59,7 +59,10 @@ $(document).ready(function(){
         success: function(response){
           this.response = response;
           if(this.response.success === "ok"){
-            
+
+            if(this.response.message === "login ok"){
+              window.location.replace(this.response.data.redirect);
+            }
           }
           else{
             $('#errorInvalidCredentials').show();
