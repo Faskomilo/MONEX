@@ -61,7 +61,9 @@ $(document).ready(function(){
           if(this.response.success === "ok"){
 
             if(this.response.message === "login ok"){
-              window.location.replace(this.response.data.redirect);
+              console.log(this.response);
+              window.location.replace(origin +"/"+ this.response.data.redirect);
+              document.cookie = "SID = " + this.response.data.cookie.SID;
             }
           }
           else{

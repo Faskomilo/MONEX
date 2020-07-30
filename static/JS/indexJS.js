@@ -55,7 +55,7 @@ function getChange(){
       console.log(response)
       this.response = response;
       if(this.response.success === "ok"){
-        $('#divGivChange').append('<h4>'+ this.response.data.billsGiven +'</h4>');
+        $('#divGivChange').html('<h4>'+ this.response.data.billsGiven +'</h4>');
       }
       else{
           console.log("Error");
