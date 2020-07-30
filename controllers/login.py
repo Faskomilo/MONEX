@@ -11,7 +11,7 @@ from MainController import Controller
 class login(Controller):
     def login(self):
         success = "ko"
-        redirect = self.request.url_root+"admin/login"
+        redirect =  "admin/login"
         _cookie = {"ERROR": "NOT AUTHORIZED"}
         message = "UNATHORIZED"
         if self.request.method == "POST":
@@ -30,7 +30,7 @@ class login(Controller):
                                             date=datetime.datetime.utcnow())
                         success = "ok"
                         message = "login ok"
-                        redirect = self.request.url_root+"admin/messages"
+                        redirect = "admin/messages"
                         _cookie = {"SID": _cookie}
         response = {"success": success,
                     "message": message,
