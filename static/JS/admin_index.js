@@ -12,12 +12,12 @@ $(document).ready(function(){
 
     $('#goToUserAction').click(function(){
         var origin = window.location.origin;
-        window.location.replace(origin + "/admin/userAction");
+        window.location.replace(origin + "/admin/userlog");
     });
 
     $('#goToAdminAction').click(function(){
         var origin = window.location.origin;
-        window.location.replace(origin + "/admin/adminAction");
+        window.location.replace(origin + "/admin/adminlog");
     });
 
     $('#goToMonex').click(function(){

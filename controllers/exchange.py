@@ -24,22 +24,9 @@ class exchange(Controller):
                 if x.quantity == 0:
                     continue
                 _quantity =  billToExchange // _bill
-                if _quantity > 0 and _quantity <= int(x.quantity):
-                    _moneyToTakeAway = _quantity * _bill
-                    billToExchange = billToExchange - _moneyToTakeAway
-                    x.quantity = int(x.quantity) - _quantity
-                    type = ""
-                    change += str(_quantity)
-                    if _bill > 10:
-                        type = "billete"
-                    else:
-                        type = "moneda"
-                    change += " " + type
-                    if _quantity > 1:
-                        change += "s"
-                    change += " de " + str(_bill) + " pesos, <br/>"
-                elif _quantity > 0 and _quantity > int(x.quantity):
-                    _quantity = int(x.quantity)
+                if _quantity > 0:
+                    if _quantity > int(x.quantity):
+                        _quantity = int(x.quantity)
                     _moneyToTakeAway = _quantity * _bill
                     billToExchange = billToExchange - _moneyToTakeAway
                     x.quantity = int(x.quantity) - _quantity

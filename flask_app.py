@@ -31,3 +31,5 @@ def not_found_error(error):
 
 if __name__ == "__main__":
     app.run()
+    app.add_url_rule('/favicon.ico',
+                 redirect_to=url_for('static', filename='favicon.ico'))

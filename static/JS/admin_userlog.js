@@ -1,9 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function(){   
     let origin = window.location.origin;
 
     $.ajax({
         type: "POST",
-        url: origin + "/admin/adminAction",
+        url: origin + "/logs/userLog",
         contentType: "application/json; charset=utf-8",
         success: function(response){
             console.log(response);
@@ -15,9 +15,8 @@ $(document).ready(function(){
                 for(let registry in this.response.data){
                     $('#tbodyUserAction').append('<tr>' +
                                                  '<td>'+ this.response.data[registry].id +'</td>' +
-                                                 '<td>'+ this.response.data[registry].username +'</td>' +
-                                                 '<td>'+ this.response.data[registry].Bill +'</td>' +
-                                                 '<td>'+ this.response.data[registry].action +'</td>' +
+                                                 '<td>'+ this.response.data[registry].bill +'</td>' +
+                                                 '<td>'+ this.response.data[registry].billsGiven +'</td>' +
                                                  '<td>'+ this.response.data[registry].date +'</td>' +
                                                  '</tr>'
                                                 );
