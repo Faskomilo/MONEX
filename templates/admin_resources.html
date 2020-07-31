@@ -156,9 +156,9 @@
                 <div class="col-5">
                     <div class="jumbotron" style="background-color: rgb(228, 228, 228);">
                         <p>Ingrese la nueva cantidad:</p>
-                        <input class="form-control" placeholder="Nueva cantidad"></input>
+                        <input id="newQuantity" type="number" min="0" onkeypress="return event.charCode >= 48" class="form-control" placeholder="Nueva cantidad" style="text-align: center;"></input>
                         <br/>
-                        <button class="btn btn-outline-success" style="width: 100%;">Aceptar</button>
+                        <button class="btn btn-outline-success" onclick="changeQuantity();" style="width: 100%;">Aceptar</button>
                     </div>
                 </div>
             </div>
@@ -215,7 +215,7 @@
                     </div>
                 </div>
               <p style="text-align:right">
-                <button id="si" style="width:20%" class="btn btn-outline-primary" data-dismiss="modal">Si</button>
+                <button id="si" style="width:20%" onclick="editTrue();" class="btn btn-outline-primary" data-dismiss="modal">Si</button>
                 <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">No</button>
               </p>
             </div>
@@ -281,7 +281,36 @@
         </div>
       </div>
 
-      <!--Modal error, selecciona una cantidad-->
+      <!--Modal error, ingrese la nueva cantidad-->
+      <div id="modalErrorNewQuantity" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #ff5656;">
+              <div class="p-0">
+                <h5>Error</h5>
+              </div>
+               <div class="p-1">
+                <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+              </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-1">
+                        <i style="color: #e20000;" class="fas fa-times-circle fa-3x"></i>
+                    </div>
+                    <div class="col" style="padding:1%; margin-left: 5%;">
+                        <p>Favor de ingresar una cantidad para la denominación seleccionada.<br/>(únicamente valores numéricos positivos).</p>
+                    </div>
+                </div>
+              <p style="text-align:right">
+                <button style="width:20%" class="btn btn-outline-secondary" data-dismiss="modal">Ok</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Modal error, fallo de sistema-->
       <div id="modalErrorFail" class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">

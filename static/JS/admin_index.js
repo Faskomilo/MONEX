@@ -70,6 +70,12 @@ function unmute(){
     document.cookie= 'voiceBot =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
+function playSound(){
+    var audio = document.createElement('audio');
+        audio.setAttribute('src', 'audio.mp3');
+        audio.play();
+}
+
 /*
 {% extends "admin_view.html" %}
 {% block content %}

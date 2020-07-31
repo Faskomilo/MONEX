@@ -6,7 +6,6 @@ $(document).ready(function(){
         url: origin + "/logs/adminLog",
         contentType: "application/json; charset=utf-8",
         success: function(response){
-            console.log(response);
             this.response = response;
 
             if(this.response.success === "ok"){

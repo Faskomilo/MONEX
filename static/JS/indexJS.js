@@ -52,8 +52,8 @@ function getChange(){
     data: infoJson,
     dataType: "json",
     success: function(response){
-      console.log(response)
       this.response = response;
+      
       if(this.response.success === "ok"){
         $('#divGivChange').html('<h4>'+ this.response.data +'</h4>');
       }
