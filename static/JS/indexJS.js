@@ -1,6 +1,5 @@
 //MONEX_INDEX.HTML
 $(document).ready(function(){
-    console.log("working js")
   $('#myModal').modal('show');
 
   $('#goToLogin').click(function(){

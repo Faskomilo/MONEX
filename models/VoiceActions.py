@@ -2,7 +2,7 @@ from models._connector_ import Base
 from MainController import Queries
 from sqlalchemy import Column, Integer, String, ForeignKey
 
-class VoiceAction(Base, Queries):
+class VoiceActions(Base, Queries):
      __tablename__ = 'voiceaction'
 
      id                 = Column(Integer, primary_key=True, nullable=False)

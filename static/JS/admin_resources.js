@@ -22,7 +22,6 @@ function getQuantitys(){
         type: "POST",
         url: origin + '/admin/getResources',
         conectType: "application/json; charset=utf-8",
-        data: infoJson,
         dataType: "json",
         success: function(response){
             this.response = response;
