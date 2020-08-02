@@ -8,16 +8,16 @@ $(document).ready(function(){
         success: function(response){
             console.log(response);
             this.response = response;
-
             if(this.response.success === "ok"){
                 $('#tbodyUserAction').empty();
-                registry = Object.keys(this.response.data)
-                for(let registry in this.response.data){
+                let registries = Object.keys(this.response.data)
+                for(let index in registries){
                     $('#tbodyUserAction').append('<tr>' +
-                                                 '<td>'+ registry +'</td>' +
-                                                 '<td>'+ this.response.data[registry].idBill +'</td>' +
-                                                 '<td>'+ this.response.data[registry].billsGiven +'</td>' +
-                                                 '<td>'+ this.response.data[registry].date +'</td>' +
+                                                 '<td>'+ registries[index] +'</td>' +
+                                                 '<td>'+ this.response.data[registries[index]].idBill +'</td>' + +'</td>' +
+                                                 '<td>'+ this.response.data[registries[index]].idBill +'</td>' +
+                                                 '<td>'+ this.response.data[registries[index]].billsGiven +'</td>' +
+                                                 '<td>'+ this.response.data[registries[index]].date +'</td>' +
                                                  '</tr>'
                                                 );
                 }

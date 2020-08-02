@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    getQuantitys();
+    getQuantities();
 });
 
 function changeQuantity(){
@@ -15,21 +15,22 @@ function changeQuantity(){
     }
 }
 
-function getQuantitys(){
+function getQuantities(){
     let origin  = window.location.origin;
 
     $.ajax({
         type: "POST",
         url: origin + '/admin/getResources',
         conectType: "application/json; charset=utf-8",
+        dataType: "json",
         success: function(response){
             this.response = response;
 
             if(this.response.success === "ok"){
-                ids = Object.keys(this.response.data);
-
-                for(key in keys){
-                    $('#quantity' + key).val(this.response.data[key]);
+                registries = Object.keys(this.response.data);
+                
+                for(let id in registries){
+                    $('#quantity' + registries[id]).val(this.response.data[registries[id]]);
                 }
             }
             else{
@@ -37,6 +38,14 @@ function getQuantitys(){
             }
         }
     });
+}
+
+function setQuantities(json){
+    registries = Object.keys(json);
+                
+    for(let id in registries){
+        $('#quantity' + registries[id]).val(json[registries[id]]);
+    }
 }
 
 function editTrue(){
@@ -59,7 +68,7 @@ function editTrue(){
             this.response = response;
 
             if(this.response.success === "ok"){
-                getQuantitys();
+                setQuantities();
                 $('#newQuantity').val('');
                 $('#modalAlertOperationSuccess').modal('show');
             }

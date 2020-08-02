@@ -5,7 +5,6 @@ from models.Bills import Bills
 from flask import make_response
 
 class getAdminLog(Controller):
-
     def getAdminLog(self):
         self.Authorize()
         if self.request.method == "POST":
@@ -32,7 +31,6 @@ class getAdminLog(Controller):
             return json
 
 class getUserLog(Controller):
-
     def getUserLog(self):
         self.Authorize()
         if self.request.method == "POST":
@@ -53,7 +51,8 @@ class getUserLog(Controller):
                 "data":data
             }
             return json
-        
+    
+class getResources(Controller):
     def getResources(self):
         self.Authorize()
         if self.request.method == "POST":

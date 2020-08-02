@@ -10,18 +10,18 @@ $(document).ready(function(){
 
             if(this.response.success === "ok"){
                 $('#tbodyUserAction').empty();
-                registry = Object.keys(this.response.data)
-                for(let registry in this.response.data){
+                registries = Object.keys(this.response.data)
+                for(let index in registries){
                     $('#tbodyUserAction').append('<tr>' +
-                                                 '<td>'+ registry +'</td>' +
-                                                 '<td>'+ this.response.data[registry].idAdmin +'</td>' +
-                                                 '<td>'+ this.response.data[registry].date +'</td>' +
-                                                 '<td>'+ this.response.data[registry].idBill +'</td>' +
-                                                 '<td>'+ this.response.data[registry].quantityBills +'</td>' +
-                                                 '<td>'+ this.response.data[registry].beforeQuantityBills +'</td>' +
-                                                 '<td>'+ this.response.data[registry].afterQuantityBills +'</td>' +
-                                                 '<td>'+ this.response.data[registry].action +'</td>' +
-                                                 '<td>'+ this.response.data[registry].date +'</td>' +
+                                                 '<td>'+ registries[index] +'</td>' +
+                                                 '<td>'+ this.response.data[registries[index]].idAdmin +'</td>' +
+                                                 '<td>'+ this.response.data[registries[index]].date +'</td>' +
+                                                 '<td>'+ this.response.data[registries[index]].idBill +'</td>' +
+                                                 '<td>'+ this.response.data[registries[index]].quantityBills +'</td>' +
+                                                 '<td>'+ this.response.data[registries[index]].beforeQuantityBills +'</td>' +
+                                                 '<td>'+ this.response.data[registries[index]].afterQuantityBills +'</td>' +
+                                                 '<td>'+ this.response.data[registries[index]].action +'</td>' +
+                                                 '<td>'+ this.response.data[registries[index]].date +'</td>' +
                                                  '</tr>'
                                                 );
                 }
