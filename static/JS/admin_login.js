@@ -15,6 +15,12 @@ $(document).ready(function(){
       $("#errorInvalidCredentials").hide();
     })
 
+    $(document).keypress(function(e){
+      if(e.keyCode==13)
+      $('#logContinue').click();
+    });
+
+    document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   });
   
   function mute(){

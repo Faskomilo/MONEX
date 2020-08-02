@@ -22,8 +22,6 @@ function getQuantitys(){
         type: "POST",
         url: origin + '/admin/getResources',
         conectType: "application/json; charset=utf-8",
-        data: infoJson,
-        dataType: "json",
         success: function(response){
             this.response = response;
 
@@ -72,6 +70,8 @@ function editTrue(){
                 else{
                     $('#modalErrorFail').modal('show');
                 }
+                
+                document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
             }
         }
     });
