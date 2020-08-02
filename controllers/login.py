@@ -12,8 +12,8 @@ class login(Controller):
     def login(self):
         success = "ko"
         redirect =  "admin/login"
-        _cookie = {"ERROR": "NOT AUTHORIZED"}
-        message = "UNATHORIZED"
+        message = "NOT LOGGED IN"
+        _cookie = None
         if self.request.method == "POST":
             _request = self.request.json
             _username = _request["username"]

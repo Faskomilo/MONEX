@@ -1,5 +1,5 @@
 from flask import make_response
-from MainController import Controller, Authorization
+from MainController import Controller
 from models.Bills import Bills
 from models.ActionLog import ActionLog
 import datetime

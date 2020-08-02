@@ -3,19 +3,23 @@ $(document).ready(function(){
 
     $.ajax({
         type: "POST",
-        url: origin + "/logs/adminLog",
+        url: origin + "/admin/getAdminLog",
         contentType: "application/json; charset=utf-8",
         success: function(response){
             this.response = response;
 
             if(this.response.success === "ok"){
                 $('#tbodyUserAction').empty();
-
+                registry = Object.keys(this.response.data)
                 for(let registry in this.response.data){
                     $('#tbodyUserAction').append('<tr>' +
-                                                 '<td>'+ this.response.data[registry].id +'</td>' +
-                                                 '<td>'+ this.response.data[registry].username +'</td>' +
-                                                 '<td>'+ this.response.data[registry].Bill +'</td>' +
+                                                 '<td>'+ registry +'</td>' +
+                                                 '<td>'+ this.response.data[registry].idAdmin +'</td>' +
+                                                 '<td>'+ this.response.data[registry].date +'</td>' +
+                                                 '<td>'+ this.response.data[registry].idBill +'</td>' +
+                                                 '<td>'+ this.response.data[registry].quantityBills +'</td>' +
+                                                 '<td>'+ this.response.data[registry].beforeQuantityBills +'</td>' +
+                                                 '<td>'+ this.response.data[registry].afterQuantityBills +'</td>' +
                                                  '<td>'+ this.response.data[registry].action +'</td>' +
                                                  '<td>'+ this.response.data[registry].date +'</td>' +
                                                  '</tr>'

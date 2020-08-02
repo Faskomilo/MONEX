@@ -1,4 +1,5 @@
 from models._connector_ import db_session as db
+from flask import request
 import datetime
 
 class Queries():
@@ -42,27 +43,36 @@ class Queries():
 
 class Controller:
     request = None
-
     def __init__(self, request):
         self.request = request
 
-class Authorization:
+    def isInt(self, string):
+        try:
+            int(string)
+            return True
+        except:
+            return False
+
+    def Authorize(self, refresh=False):
+        authorization = Authorize().Authorization(refresh)
+        if not self.isInt(authorization):
+            return authorization
+
+class Authorize:
+
     @staticmethod
-    def Authorize(self, cookie, refresh):
-        def privilege(func):
-            def wrapper(**kwargs):
-                from models.Sessions import Sessions
-                _session = Sessions.get(Sessions.cookie == cookie)
-                if _session is not None:
-                    if refresh:
-                        _session.date = datetime.datetime.utcnow()
-                        _session.save()
-                    del Sessions
-                    return func(self, _session.idAdmin, **kwargs)
-                else:
-                    json = {
-                        "success":"ko",
-                        "message":"UNATHORIZED"
-                    }
-                    del Sessions
-                    return json
+    def Authorization(refresh):
+        from models.Sessions import Sessions
+        _session = Sessions.get(Sessions.cookie == request.cookies.get("SID"))
+        if _session is not None:
+            if refresh:
+                _session.date = datetime.datetime.utcnow()
+                _session.save()
+            return  _session.idAdmin
+        else:
+            print("Not Authorized")
+            json = {
+                "success":"ko",
+                "message":"UNATHORIZED"
+            }
+            return json

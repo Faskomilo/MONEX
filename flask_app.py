@@ -1,11 +1,16 @@
 #!/usr/bin/env python
-from flask import Flask, request, render_template, make_response, redirect
+from flask import Flask, request, render_template, make_response, redirect, url_for, send_from_directory
 import os
 import importlib
 import models
 import controllers
 
 app = Flask(__name__)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route("/", methods=["GET","POST"])
 def listenRoot():
@@ -17,7 +22,7 @@ def listen(controller, action):
         return render_template(controller + "_" + action + ".html"), 200
     elif os.path.isfile("controllers/" + controller + ".py"):
         importedController = importlib.import_module("controllers." + controller)
-        classImportedController = getattr(importedController, controller)
+        classImportedController = getattr(importedController, action)
         instanceImportedClass = classImportedController(request)
         execute = getattr(instanceImportedClass, action, None)
         if execute:
@@ -31,5 +36,4 @@ def not_found_error(error):
 
 if __name__ == "__main__":
     app.run()
-    app.add_url_rule('/favicon.ico',
-                 redirect_to=url_for('static', filename='favicon.ico'))
+    
