@@ -10,26 +10,29 @@ $(document).ready(function(){
             if(this.response.success === "ok"){
                 $('#tbodyUserAction').empty();
                 let registries = Object.keys(this.response.data)
-                for(let index in registries){
-                    $('#tbodyUserAction').append('<tr>' +
-                                                 '<td>'+ registries[index] +'</td>' +
-                                                 '<td>'+ this.response.data[registries[index]].idBill +'</td>' +
-                                                 '<td>'+ this.response.data[registries[index]].billsGiven +'</td>' +
-                                                 '<td>'+ this.response.data[registries[index]].date +'</td>' +
-                                                 '</tr>'
-                                                );
+                if(registries.length > 0){
+                    for(let index in registries){
+                        $('#tbodyUserAction').append('<tr>' +
+                                                     '<td>'+ registries[index] +'</td>' +
+                                                     '<td>'+ this.response.data[registries[index]].idBill +'</td>' +
+                                                     '<td>'+ this.response.data[registries[index]].billsGiven +'</td>' +
+                                                     '<td>'+ this.response.data[registries[index]].date +'</td>' +
+                                                     '</tr>'
+                                                    );
+                    }
+    
+                        $('#tableUserAction').DataTable();
                 }
-
-                    $('#tableUserAction').DataTable();
-                }
+                
                 else{
                     $('#tableUserAction').hide();
                     $('#divShowMessages').append('<div class="alert alert-info" role="alert">Por el momento no hay registros de movimientos de usuarios.</div>');
                 }
             }
             else{
-                if(this.response.message == "UNATHORIZED"){
+                if(this.response.message == "UNAUTHORIZED"){
                     document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                    document.location.replace(origin+"/monex/index")
                 }
             }
         }

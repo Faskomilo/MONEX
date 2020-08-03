@@ -29,8 +29,9 @@ $(document).ready(function(){
                 $('#tableUserAction').DataTable();
             }
             else{
-                if(this.response.message == "UNATHORIZED"){
+                if(this.response.message == "UNAUTHORIZED"){
                     document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                    document.location.replace(origin+"/monex/index")
                 }            
             }
         }

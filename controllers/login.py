@@ -25,6 +25,9 @@ class login(Controller):
                     password = hashlib.sha224(str(_password).encode('utf-8')).hexdigest()
                     if password == _admin.password:
                         _cookie = base64.urlsafe_b64encode(os.urandom(32)).rstrip(b"=").decode("ascii")
+                        _session = Sessions.get(Sessions.idAdmin == _admin.id)
+                        if _session is not None:
+                            _session.delete()
                         _session = Sessions(cookie=_cookie,
                                             idAdmin=_admin.id,
                                             date=datetime.datetime.utcnow())

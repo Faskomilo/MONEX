@@ -30,8 +30,12 @@ function getQuantities(){
                 setQuantities(this.response.data);
             }
             else{
-                console.log("error:: fallo al extraer cantidades");
+                if(this.response.message == "UNAUTHORIZED"){
+                    document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                    document.location.replace(origin+"/monex/index")
+                }    
             }
+            
         }
     });
 }
@@ -69,16 +73,17 @@ function editTrue(){
                 $('#modalAlertOperationSuccess').modal('show');
             }
             else{
-                if(this.response.message === "Cantidad no valida"){
+                if(this.response.message == "UNAUTHORIZED"){
+                    document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                    document.location.replace(origin+"/monex/index")
+                }          
+                if(this.response.message === "INVALID NEW QUANTITY"){
                     $('#errorWrongQuantityAdmin').modal('show');
                 }
                 else{
                     $('#modalErrorFail').modal('show');
                 }
-                
-                if(this.response.message == "UNATHORIZED"){
-                    document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-                }            }
+            }
         }
     });
 }

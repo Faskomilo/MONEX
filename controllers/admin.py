@@ -8,7 +8,9 @@ import datetime
 
 class getAdminLog(Controller):
     def getAdminLog(self):
-        self.Authorize()
+        _authorized = Authorize.Authorization()
+        if not self.isInt(_authorized):
+            return _authorized
         if self.request.method == "GET":
             success = "ok"
             message = "All adminLogs"
@@ -33,7 +35,9 @@ class getAdminLog(Controller):
 
 class getUserLog(Controller):
     def getUserLog(self):
-        self.Authorize()
+        _authorized = Authorize.Authorization()
+        if not self.isInt(_authorized):
+            return _authorized
         if self.request.method == "GET":
             success = "ok"
             message = "All UserLogs"
@@ -55,7 +59,9 @@ class getUserLog(Controller):
     
 class getResources(Controller):
     def getResources(self):
-        self.Authorize()
+        _authorized = Authorize.Authorization()
+        if not self.isInt(_authorized):
+            return _authorized
         if self.request.method == "GET" or self.request.method == "POST":
             success = "ok"
             message = "All Resources"

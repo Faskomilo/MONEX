@@ -53,26 +53,30 @@ class Controller:
         except:
             return False
 
-    def Authorize(self, refresh=False):
-        authorization = Authorize().Authorization(refresh)
-        if not self.isInt(authorization):
-            return authorization
-
 class Authorize:
 
     @staticmethod
-    def Authorization(refresh):
+    def Authorization(refresh=False):
         from models.Sessions import Sessions
         _session = Sessions.get(Sessions.cookie == request.cookies.get("SID"))
         if _session is not None:
+            time_diff = (datetime.datetime.utcnow() - _session.date).total_seconds()/60
+            if time_diff > 5:
+                print("UNAUTHORIZED")
+                _session.delete()
+                return Authorize.notAuthorized()
             if refresh:
                 _session.date = datetime.datetime.utcnow()
                 _session.save()
-            return  _session.idAdmin
+            return int(_session.idAdmin)
         else:
-            print("UNATHORIZED")
-            json = {
-                "success":"ko",
-                "message":"UNATHORIZED"
-            }
-            return json
+            return Authorize.notAuthorized()
+
+    @staticmethod
+    def notAuthorized():
+        print("UNAUTHORIZED")
+        json = {
+            "success":"ko",
+            "message":"UNAUTHORIZED"
+        }
+        return json

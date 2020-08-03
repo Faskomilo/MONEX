@@ -11,25 +11,33 @@ $(document).ready(function(){
             if(this.response.success === "ok"){
                 $('#tbodyAdminAction').empty();
                 registries = Object.keys(this.response.data)
-                for(let index in registries){
-                    $('#tbodyAdminAction').append('<tr>' +
-                                                 '<td>'+ registries[index] +'</td>' +
-                                                 '<td>'+ this.response.data[registries[index]].idAdmin +'</td>' +
-                                                 '<td>'+ this.response.data[registries[index]].idBill +'</td>' +
-                                                 '<td>'+ this.response.data[registries[index]].newQuantityBills +'</td>' +
-                                                 '<td>'+ this.response.data[registries[index]].beforeQuantityBills +'</td>' +
-                                                 '<td>'+ this.response.data[registries[index]].action +'</td>' +
-                                                 '<td>'+ this.response.data[registries[index]].date +'</td>' +
-                                                 '</tr>'
-                                                );
+                if(registries.length > 0 ){
+                    for(let index in registries){
+                        $('#tbodyAdminAction').append('<tr>' +
+                                                     '<td>'+ registries[index] +'</td>' +
+                                                     '<td>'+ this.response.data[registries[index]].idAdmin +'</td>' +
+                                                     '<td>'+ this.response.data[registries[index]].idBill +'</td>' +
+                                                     '<td>'+ this.response.data[registries[index]].newQuantityBills +'</td>' +
+                                                     '<td>'+ this.response.data[registries[index]].beforeQuantityBills +'</td>' +
+                                                     '<td>'+ this.response.data[registries[index]].action +'</td>' +
+                                                     '<td>'+ this.response.data[registries[index]].date +'</td>' +
+                                                     '</tr>'
+                                                    );
+                    }
+    
+                    $('#tableAdminAction').DataTable();
                 }
-
-                $('#tableAdminAction').DataTable();
+                else{
+                    $('#tableAdminAction').hide();
+                    $('#divShowMessages').append('<div class="alert alert-info" role="alert">Por el momento no hay registros de movimientos de administradores.</div>');
+                }
             }
             else{
-                if(this.response.message == "UNATHORIZED"){
+                if(this.response.message == "UNAUTHORIZED"){
                     document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-                }            }
+                    document.location.replace(origin+"/monex/index")
+                }
+            }
         }
     })
 });
