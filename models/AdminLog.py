@@ -12,9 +12,8 @@ class AdminLog(Base, Queries):
       idAdmin               = Column(Integer,ForeignKey(Admins.id), nullable=False)
       date                  = Column(DateTime, nullable=False)
       idBill                = Column(Integer,ForeignKey(Bills.id), nullable=False)
-      quantityBills         = Column(Integer, nullable=False)
+      newQuantityBills         = Column(Integer, nullable=False)
       beforeQuantityBills   = Column(Integer, nullable=False)
-      afterQuantityBills    = Column(Integer, nullable=False)
       action                = Column(String, nullable=False)
 
       Admins = relationship(Admins)

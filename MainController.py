@@ -70,7 +70,7 @@ class Authorize:
                 _session.save()
             return  _session.idAdmin
         else:
-            print("Not Authorized")
+            print("UNATHORIZED")
             json = {
                 "success":"ko",
                 "message":"UNATHORIZED"

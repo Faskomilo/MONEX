@@ -19,19 +19,15 @@ function getQuantities(){
     let origin  = window.location.origin;
 
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: origin + '/admin/getResources',
-        conectType: "application/json; charset=utf-8",
+        contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(response){
             this.response = response;
 
             if(this.response.success === "ok"){
-                registries = Object.keys(this.response.data);
-                
-                for(let id in registries){
-                    $('#quantity' + registries[id]).val(this.response.data[registries[id]]);
-                }
+                setQuantities(this.response.data);
             }
             else{
                 console.log("error:: fallo al extraer cantidades");
@@ -61,14 +57,14 @@ function editTrue(){
     $.ajax({
         type: "POST",
         url: origin + '/admin/getResources',
-        conectType: "application/json; charset=utf-8",
+        contentType: "application/json; charset=utf-8",
         data: infoJson,
         dataType: "json",
         success: function(response){
             this.response = response;
 
             if(this.response.success === "ok"){
-                setQuantities();
+                setQuantities(this.response.data);
                 $('#newQuantity').val('');
                 $('#modalAlertOperationSuccess').modal('show');
             }
@@ -80,8 +76,9 @@ function editTrue(){
                     $('#modalErrorFail').modal('show');
                 }
                 
-                document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-            }
+                if(this.response.message == "UNATHORIZED"){
+                    document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                }            }
         }
     });
 }

@@ -2,7 +2,7 @@ $(document).ready(function(){
     let origin = window.location.origin;
 
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: origin + '/get/messages',
         contentType: "application/json; charset=utf-8",
         success: function(response){
@@ -29,7 +29,9 @@ $(document).ready(function(){
                 $('#tableUserAction').DataTable();
             }
             else{
-                document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                if(this.response.message == "UNATHORIZED"){
+                    document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                }            
             }
         }
     })
