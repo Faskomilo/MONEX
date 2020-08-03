@@ -71,9 +71,13 @@ function unmute(){
 }
 
 function playSound(){
-    var audio = document.createElement('audio');
-        audio.setAttribute('src', 'audio.mp3');
-        audio.play();
+    /*var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', '../contents/voicebot/admin_audio.mp3');
+    audioElement.play();*/
+
+    const sound = new Audio();
+    sound.src = '../contents/voicebot/admin_audio.mp3';
+    sound.play() ;
 }
 
 /*
