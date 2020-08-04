@@ -11,23 +11,17 @@
 -- ---------------------------------------------------------
 
 
--- CREATE DATABASE "monex" ---------------------------------
-CREATE DATABASE IF NOT EXISTS `monex` CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `monex`;
--- ---------------------------------------------------------
-
-
 -- CREATE TABLE "actionlog" ------------------------------------
 CREATE TABLE `actionlog`( 
 	`id` Int( 0 ) AUTO_INCREMENT NOT NULL,
 	`idBill` Int( 0 ) NOT NULL,
-	`billsGiven` VarChar( 50 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+	`billsGiven` Text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
 	`date` DateTime NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 1;
+AUTO_INCREMENT = 9;
 -- -------------------------------------------------------------
 
 
@@ -37,15 +31,14 @@ CREATE TABLE `adminlog`(
 	`idAdmin` Int( 0 ) NOT NULL,
 	`date` DateTime NOT NULL,
 	`idBill` Int( 0 ) NOT NULL,
-	`quantityBills` Int( 0 ) NOT NULL,
+	`newQuantityBills` Int( 0 ) NOT NULL,
 	`beforeQuantityBills` Int( 0 ) NOT NULL,
-	`afterQuantityBills` Int( 0 ) NOT NULL,
 	`action` Text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 1;
+AUTO_INCREMENT = 2;
 -- -------------------------------------------------------------
 
 
@@ -60,7 +53,7 @@ CREATE TABLE `admins`(
 CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 9;
+AUTO_INCREMENT = 2;
 -- -------------------------------------------------------------
 
 
@@ -86,7 +79,7 @@ CREATE TABLE `bills`(
 CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 1;
+AUTO_INCREMENT = 1001;
 -- -------------------------------------------------------------
 
 
@@ -109,7 +102,8 @@ CREATE TABLE `voiceactions`(
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 1;
 -- -------------------------------------------------------------
 
 
@@ -133,7 +127,8 @@ CREATE TABLE `voicenumbers`(
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 1;
 -- -------------------------------------------------------------
 
 
@@ -163,15 +158,15 @@ BEGIN;
 
 INSERT INTO `bills`(`id`,`quantity`) VALUES 
 ( '1', '20' ),
-( '2', '15' ),
-( '5', '10' ),
+( '2', '13' ),
+( '5', '11' ),
 ( '10', '8' ),
 ( '20', '8' ),
-( '50', '6' ),
-( '100', '5' ),
-( '200', '5' ),
+( '50', '4' ),
+( '100', '4' ),
+( '200', '1' ),
 ( '500', '4' ),
-( '1000', '0' );
+( '1000', '1' );
 COMMIT;
 -- ---------------------------------------------------------
 
@@ -286,9 +281,9 @@ ALTER TABLE `allmessages`
 -- -------------------------------------------------------------
 
 
--- CREATE LINK "fk_session_admin" ------------------------------
+-- CREATE LINK "fk_sessions_admins" ----------------------------
 ALTER TABLE `sessions`
-	ADD CONSTRAINT `fk_session_admin` FOREIGN KEY ( `idAdmin` )
+	ADD CONSTRAINT `fk_sessions_admins` FOREIGN KEY ( `idAdmin` )
 	REFERENCES `admins`( `id` )
 	ON DELETE No Action
 	ON UPDATE No Action;
