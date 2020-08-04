@@ -57,6 +57,12 @@ function getCookie(name) {
     return decodeURI(dc.substring(begin + prefix.length, end));
 } 
 
+function playSound(){
+    const sound = new Audio();
+    sound.src = '/static/contents/voicebot/Bienvenida.wav';
+    sound.play() ;
+}
+
 function mute(){
     $('#botMute').show();
     $('#botUnmute').hide();
@@ -69,23 +75,3 @@ function unmute(){
 
     document.cookie= 'voiceBot =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
-
-function playSound(){
-    /*var audioElement = document.createElement('audio');
-    audioElement.setAttribute('src', '../contents/voicebot/admin_audio.mp3');
-    audioElement.play();*/
-
-    const sound = new Audio();
-    sound.src = '../contents/voicebot/admin_audio.mp3';
-    sound.play() ;
-}
-
-/*
-{% extends "admin_view.html" %}
-{% block content %}
-mensaje
-{% endblock %}
-
-{% block content %}
-{% endblock %}
-*/

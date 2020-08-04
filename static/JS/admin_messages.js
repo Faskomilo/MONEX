@@ -11,18 +11,20 @@ $(document).ready(function(){
             if(this.response.success === "ok"){
                 $('#tbodyUserAction').empty();
 
-                if(this.response.data.lenght != 0){
-                    for(let denomination in this.response.data){
-                        if(this.response.data[denomination]["Status"] == "excess"){
-                            $('#divShowMessages').append('<div class="alert alert-warning" role="alert">'+this.response.data[denomination]["Message"]+'</div>');
+                registries = Object.keys(this.response.data);
+                if(registries.length != 0){
+
+                    for(let denomination in registries){
+                        if(this.response.data[registries[denomination]]["Status"] == "excess"){
+                            $('#divShowMessages').append('<div class="alert alert-warning" role="alert">'+this.response.data[registries[denomination]]["Message"]+'</div>');
                         }
-                        else if(this.response.data[denomination]["Status"] == "low"){
-                            $('#divShowMessages').append('<div class="alert alert-danger" role="alert">'+this.response.data[denomination]["Message"]+'</div>');
+                        else if(this.response.data[registries[denomination]]["Status"] == "low"){
+                            $('#divShowMessages').append('<div class="alert alert-danger" role="alert">'+this.response.data[registries[denomination]]["Message"]+'</div>');
                         }
                     }
                 }
                 else{
-                    $('#divShowMessages').append('<div class="alert alert-success" role="alert" style="text-align:center;>Por el momento no hay mensajes a mostrar, esto significa que las cantidades dentro de la máquina de cambio están dentro del rango aceptado.</div>');
+                    $('#divShowMessages').append('<div class="alert alert-success" role="alert">Por el momento no hay mensajes a mostrar, esto significa que las cantidades dentro de la máquina de cambio están dentro del rango aceptado.</div>');
                 }
 
                 $('#tableUserAction').DataTable();
