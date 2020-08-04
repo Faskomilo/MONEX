@@ -39,7 +39,10 @@ class exchange(Controller):
                     change += " " + type
                     if _quantity > 1:
                         change += "s"
-                    change += " de " + str(_bill) + " pesos, <br/>"
+                    change += " de " + str(_bill) + " peso"
+                    if _bill != 1:
+                        change += "s"
+                    change += ", <br/>"
             change = change[:-7]
             if billToExchange  == 0:
                 success = "ok"
