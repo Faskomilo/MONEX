@@ -15,7 +15,7 @@
 CREATE TABLE `actionlog`( 
 	`id` Int( 0 ) AUTO_INCREMENT NOT NULL,
 	`idBill` Int( 0 ) NOT NULL,
-	`billsGiven` Text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+	`billsGiven` Text CHARACTER SET utf8mb4  NOT NULL,
 	`date` DateTime NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
@@ -33,7 +33,7 @@ CREATE TABLE `adminlog`(
 	`idBill` Int( 0 ) NOT NULL,
 	`newQuantityBills` Int( 0 ) NOT NULL,
 	`beforeQuantityBills` Int( 0 ) NOT NULL,
-	`action` Text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+	`action` Text CHARACTER SET utf8mb4  NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
 
@@ -45,8 +45,8 @@ AUTO_INCREMENT = 1;
 -- CREATE TABLE "admins" ---------------------------------------
 CREATE TABLE `admins`( 
 	`id` Int( 0 ) AUTO_INCREMENT NOT NULL,
-	`username` VarChar( 15 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-	`password` VarChar( 56 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+	`username` VarChar( 15 ) CHARACTER SET utf8mb4  NOT NULL,
+	`password` VarChar( 56 ) CHARACTER SET utf8mb4  NOT NULL,
 	`deleted` TinyInt( 1 ) NOT NULL DEFAULT 0,
 	PRIMARY KEY ( `id` ),
 	CONSTRAINT `username` UNIQUE( `username` ) )
@@ -84,7 +84,7 @@ ENGINE = InnoDB;
 
 -- CREATE TABLE "sessions" -------------------------------------
 CREATE TABLE `sessions`( 
-	`cookie` Char( 43 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+	`cookie` Char( 43 ) CHARACTER SET utf8mb4  NOT NULL,
 	`idAdmin` Int( 0 ) NOT NULL,
 	`date` DateTime NOT NULL,
 	PRIMARY KEY ( `cookie` ) )
@@ -97,7 +97,7 @@ ENGINE = InnoDB;
 -- CREATE TABLE "voiceactions" ---------------------------------
 CREATE TABLE `voiceactions`( 
 	`id` Int( 0 ) AUTO_INCREMENT NOT NULL,
-	`recording` Text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+	`recording` Text CHARACTER SET utf8mb4  NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
 
@@ -109,7 +109,7 @@ AUTO_INCREMENT = 1;
 -- CREATE TABLE "voicebills" -----------------------------------
 CREATE TABLE `voicebills`( 
 	`id` Int( 0 ) AUTO_INCREMENT NOT NULL,
-	`recording` Text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+	`recording` Text CHARACTER SET utf8mb4  NOT NULL,
 	`idBill` Int( 0 ) NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
@@ -122,7 +122,7 @@ AUTO_INCREMENT = 1;
 -- CREATE TABLE "voicenumbers" ---------------------------------
 CREATE TABLE `voicenumbers`( 
 	`id` Int( 0 ) AUTO_INCREMENT NOT NULL,
-	`recording` Text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+	`recording` Text CHARACTER SET utf8mb4  NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
 
