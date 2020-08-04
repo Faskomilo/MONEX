@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 from flask import Flask, request, render_template, make_response, redirect, url_for, send_from_directory
+from MainController import BeforeRun
 import os
 import importlib
 import models
 import controllers
+
 
 app = Flask(__name__)
 
@@ -35,5 +37,5 @@ def not_found_error(error):
     return render_template('404_error.html'), 404
 
 if __name__ == "__main__":
+    BeforeRun().checkForConfigIniErrors()
     app.run()
-    

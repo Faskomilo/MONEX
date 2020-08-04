@@ -102,3 +102,34 @@ class getResources(Controller):
                 "data":data
             }
             return json
+
+class getMessages(Controller):
+    def getMessages(self):
+        _authorized = Authorize.Authorization()
+        if not self.isInt(_authorized):
+            return _authorized
+        if self.request.method == "GET":
+            success = "ok"
+            message = "All Messages"
+            data = {}
+            limits = self.getResourceLimits()
+            _bills = Bills.getAll()
+            for bill in _bills:
+                if bill.quantity >= limits[str(bill.id)]["EXCESS-LIMIT"]:
+                    info = {
+                        "Status":"excess",
+                        "Message": "Denominación " + bill.id + " está en su límite, favor de retirar exceso"
+                    }
+                    data[bill.id] = info
+                elif bill .quantity <= limits[str(bill.id)]["SCARCE-LIMIT"]:
+                    info = {
+                        "Status":"low",
+                        "Message": "Denominación " + str(bill.id) + " está en su límite, favor de agregar más billetes"
+                    }
+                    data[bill.id] = info
+            json = {
+                "success":success,
+                "message":message,
+                "data":data
+            }
+            return json

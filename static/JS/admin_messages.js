@@ -3,7 +3,7 @@ $(document).ready(function(){
 
     $.ajax({
         type: "GET",
-        url: origin + '/get/messages',
+        url: origin + '/admin/getMessages',
         contentType: "application/json; charset=utf-8",
         success: function(response){
             this.response = response;
@@ -12,13 +12,12 @@ $(document).ready(function(){
                 $('#tbodyUserAction').empty();
 
                 if(this.response.data.lenght != 0){
-                    for(let registry in this.response.data){
-                        if(this.response.data.status[registry] == "excess"){
-                            $('#divShowMessages').append('<div class="alert alert-warning" role="alert">'+this.response.data.message[registry]+'</div>');
+                    for(let denomination in this.response.data){
+                        if(this.response.data[denomination]["Status"] == "excess"){
+                            $('#divShowMessages').append('<div class="alert alert-warning" role="alert">'+this.response.data[denomination]["Message"]+'</div>');
                         }
-                        /*if(this.response.data.status[registry] == "low")*/
-                        else{
-                            $('#divShowMessages').append('<div class="alert alert-danger" role="alert">'+this.response.data.message[registry]+'</div>');
+                        else if(this.response.data[denomination]["Status"] == "low"){
+                            $('#divShowMessages').append('<div class="alert alert-danger" role="alert">'+this.response.data[denomination]["Message"]+'</div>');
                         }
                     }
                 }
