@@ -1,4 +1,5 @@
 from MainController import Controller, Authorize
+from models.Admins import Admins
 from models.ActionLog import ActionLog
 from models.AdminLog import AdminLog
 from models.Bills import Bills
@@ -8,7 +9,7 @@ import datetime
 
 class getAdminLog(Controller):
     def getAdminLog(self):
-        _authorized = Authorize.Authorization()
+        _authorized = Authorize.Authorization(True)
         if not self.isInt(_authorized):
             return _authorized
         if self.request.method == "GET":
@@ -18,7 +19,7 @@ class getAdminLog(Controller):
             adminLogs = AdminLog.getAll()
             for row in adminLogs:
                 rowColumns = {
-                    "idAdmin":row.idAdmin,
+                    "idAdmin":Admins.get(Admins.id == row.idAdmin).username,
                     "date":format_datetime(datetime=row.date, locale="es_MX"),
                     "idBill":row.idBill,
                     "newQuantityBills":row.newQuantityBills,
@@ -35,7 +36,7 @@ class getAdminLog(Controller):
 
 class getUserLog(Controller):
     def getUserLog(self):
-        _authorized = Authorize.Authorization()
+        _authorized = Authorize.Authorization(True)
         if not self.isInt(_authorized):
             return _authorized
         if self.request.method == "GET":
@@ -59,7 +60,7 @@ class getUserLog(Controller):
     
 class getResources(Controller):
     def getResources(self):
-        _authorized = Authorize.Authorization()
+        _authorized = Authorize.Authorization(True)
         if not self.isInt(_authorized):
             return _authorized
         if self.request.method == "GET" or self.request.method == "POST":
@@ -71,28 +72,33 @@ class getResources(Controller):
                 message = "INVALID NEW QUANTITY"
                 request = self.request.json
                 if self.isInt(request["quantity"]):
-                    if int(request["quantity"]) > 0:
-                        _billToChange = Bills.get(Bills.id == request["bill"])
-                        if _billToChange is not None:
-                            _beforeQuantity = _billToChange.quantity
-                            _billToChange.quantity = request["quantity"]
-                            if _billToChange.save():
-                                success = "ok"
-                                message = "UPDATED QUANTITY"
-                                if int(request["quantity"]) > _beforeQuantity:
-                                    action = "Aumento de cantidad de denominación"
-                                elif int(request["quantity"]) == _beforeQuantity:
-                                    action = "Sin cambios"
-                                else:
-                                    action = "Disminución de cantidad de denominación"
-                                _newAdminLog = AdminLog(idAdmin = Authorize.Authorization(False),
-                                                        date =datetime.datetime.utcnow(),
-                                                        idBill=request["bill"],
-                                                        newQuantityBills=request["quantity"],
-                                                        beforeQuantityBills=_beforeQuantity,
-                                                        action= action
-                                                        )
-                                _newAdminLog.save()
+                    newQuantity = int(request["quantity"])
+                    if newQuantity > 0:
+                        _billToModify = Bills.get(Bills.id == request["bill"])
+                        limits = self.getResourceLimits()
+                        topLimit = int(limits[str(_billToModify.id)]["EXCESS-LIMIT"])
+                        bottomLimit = int(limits[str(_billToModify.id)]["SCARCE-LIMIT"])
+                        if _billToModify is not None:
+                            if newQuantity > bottomLimit and newQuantity < topLimit:
+                                _beforeQuantity = _billToModify.quantity
+                                _billToModify.quantity = newQuantity
+                                if _billToModify.save():
+                                    success = "ok"
+                                    message = "UPDATED QUANTITY"
+                                    if newQuantity > _beforeQuantity:
+                                        action = "Aumento de cantidad de denominación"
+                                    elif newQuantity == _beforeQuantity:
+                                        action = "Sin cambios"
+                                    else:
+                                        action = "Disminución de cantidad de denominación"
+                                    _newAdminLog = AdminLog(idAdmin = Authorize.Authorization(False),
+                                                            date =datetime.datetime.utcnow(),
+                                                            idBill=request["bill"],
+                                                            newQuantityBills=newQuantity,
+                                                            beforeQuantityBills=_beforeQuantity,
+                                                            action= action
+                                                            )
+                                    _newAdminLog.save()
             allBills = Bills.getAll()
             for row in allBills:
                 data[row.id] = row.quantity
@@ -105,7 +111,7 @@ class getResources(Controller):
 
 class getMessages(Controller):
     def getMessages(self):
-        _authorized = Authorize.Authorization()
+        _authorized = Authorize.Authorization(True)
         if not self.isInt(_authorized):
             return _authorized
         if self.request.method == "GET":
@@ -118,13 +124,13 @@ class getMessages(Controller):
                 if bill.quantity >= limits[str(bill.id)]["EXCESS-LIMIT"]:
                     info = {
                         "Status":"excess",
-                        "Message": "Denominación " + bill.id + " está en su límite, favor de retirar exceso"
+                        "Message": "Denominación " + str(bill.id) + " tiene un exceso de cantidad, favor de retirar exceso"
                     }
                     data[bill.id] = info
                 elif bill .quantity <= limits[str(bill.id)]["SCARCE-LIMIT"]:
                     info = {
                         "Status":"low",
-                        "Message": "Denominación " + str(bill.id) + " está en su límite, favor de agregar más billetes"
+                        "Message": "Denominación " + str(bill.id) + " está llegando a una cantidad muy baja, favor de agregar más"
                     }
                     data[bill.id] = info
             json = {

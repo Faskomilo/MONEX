@@ -154,6 +154,6 @@ class BeforeRun():
                     print("Parameter \"" + Option + "\" in section \"" + Section + "\" in config.ini missing, see exampleConfig.ini for reference")
                     sys.exit()
                 if self.Options[Section][Option]:
-                    if not Controller(None).isInt(Config.get("APPLICATION", "timeout")):
+                    if not Controller(None).isInt(Config.get(Section, Option)):
                         print("Wrong type parameter \"host\" in section \"DATABASE\" in config.ini, see exampleConfig.ini for reference")
                         sys.exit()
