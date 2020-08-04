@@ -124,13 +124,13 @@ class getMessages(Controller):
                 if bill.quantity >= limits[str(bill.id)]["EXCESS-LIMIT"]:
                     info = {
                         "Status":"excess",
-                        "Message": "Denominación " + str(bill.id) + " tiene un exceso de cantidad, favor de retirar exceso"
+                        "Message": "La denominación de" + str(bill.id) + "$ tiene un exceso de cantidad, favor de retirar exceso"
                     }
                     data[bill.id] = info
                 elif bill .quantity <= limits[str(bill.id)]["SCARCE-LIMIT"]:
                     info = {
                         "Status":"low",
-                        "Message": "Denominación " + str(bill.id) + " está llegando a una cantidad muy baja, favor de agregar más"
+                        "Message": "La denominación de" + str(bill.id) + "$ está llegando a una cantidad muy baja, favor de agregar más"
                     }
                     data[bill.id] = info
             json = {
