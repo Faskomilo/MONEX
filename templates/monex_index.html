@@ -92,7 +92,7 @@
   </div>
 
   <div class="icon-bar">
-    <button id="botAnswer" class="botAnswer"><i class="fas fa-question-circle"></i></button>
+    <button id="botAnswer" onclick="playSelect();" class="botAnswer"><i class="fas fa-question-circle"></i></button>
     <button id="botUnmute" onclick="mute();" class="botTools"><i class="fas fa-volume-up"></i></button>
     <button id="botMute" onclick="unmute();" class="botTools" style="display:none"><i class="fas fa-volume-mute"></i></button>
   </div>
@@ -106,7 +106,7 @@
             <h1>Bienvenid@ a MONEX</h1>
           </div>
           <div class="p-4">
-            <button id="answerDivWellcome" class="questionBot"><i style="color: rgb(0, 72, 139);" class="fas fa-question-circle fa-2x"></i></button>
+            <button id="answerDivWellcome" onclick="playWellcomeSound();" class="questionBot"><i style="color: rgb(0, 72, 139);" class="fas fa-question-circle fa-2x"></i></button>
           </div>
         </div>
         <div class="modal-body">
@@ -122,7 +122,7 @@
               <td>
                 <a id="goToLogin" role="button" style="color:grey"><i width="100px" class="fas fa-key fa-2x"></i></a>
               <td style="text-align:right">
-                <button type="button" class="btn btn-dark" data-dismiss="modal">Continuar</button>
+                <button type="button" class="btn btn-dark" onclick="stop();" data-dismiss="modal">Continuar</button>
               </td>
             </tr>
           </table>

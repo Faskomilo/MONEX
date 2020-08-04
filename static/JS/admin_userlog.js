@@ -26,7 +26,7 @@ $(document).ready(function(){
                 
                 else{
                     $('#tableUserAction').hide();
-                    $('#divShowMessages').append('<div class="alert alert-info" role="alert">Por el momento no hay registros de movimientos de usuarios.</div>');
+                    $('#divContent').append('<div class="alert alert-info" role="alert" style="text-align:center">Por el momento no hay registros de movimientos de usuarios.</div>');
                 }
             }
             else{
