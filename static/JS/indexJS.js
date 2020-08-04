@@ -1,6 +1,16 @@
 //MONEX_INDEX.HTML
+const sound = new Audio();
+vbSound = true;
+
 $(document).ready(function(){
+
   $('#myModal').modal('show');
+
+  sound.src = '/static/contents/voicebot/monex_bienvenida.wav';
+  sound.play();
+
+  $('#myModal').on('shown.bs.modal', function (e) {
+  })
 
   $('#goToLogin').click(function(){
     var origin  = window.location.origin;
@@ -11,16 +21,25 @@ $(document).ready(function(){
     var origin  = window.location.origin;
     window.location.replace(origin + "/monex/index");
   });
+
+  $('#myModal').on('hidden.bs.modal', function (e) {
+    sound.pause();
+    sound.src = '/static/contents/voicebot/monex_selectButton.wav';
+    sound.play();
+  })
 });
 
 function mute(){
   $('#botMute').show();
   $('#botUnmute').hide();
+  sound.pause();
+  vbSound = false;
 }
 
 function unmute(){
   $('#botMute').hide();
   $('#botUnmute').show();
+  vbSound = true;
 }
 
 function continueChange(){
@@ -71,4 +90,14 @@ function showEnd(){
 
 function clearRB(){
   $('input[type="radio"]').prop('checked', false);
+}
+
+function playWellcomeSound(){
+  sound.src = '/static/contents/voicebot/monex_bienvenida.wav';
+  sound.play();
+}
+
+function playSelect(){
+  sound.src = '/static/contents/voicebot/monex_selectButton.wav';
+  sound.play();
 }

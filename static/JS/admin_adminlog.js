@@ -10,8 +10,10 @@ $(document).ready(function(){
 
             if(this.response.success === "ok"){
                 $('#tbodyAdminAction').empty();
-                registries = Object.keys(this.response.data)
-                if(registries.length > 0 ){
+
+                registries = Object.keys(this.response.data);
+                if(registries.length > 0){
+                    
                     for(let index in registries){
                         $('#tbodyAdminAction').append('<tr>' +
                                                      '<td>'+ registries[index] +'</td>' +
@@ -29,7 +31,7 @@ $(document).ready(function(){
                 }
                 else{
                     $('#tableAdminAction').hide();
-                    $('#divShowMessages').append('<div class="alert alert-info" role="alert">Por el momento no hay registros de movimientos de administradores.</div>');
+                    $('#divContent').append('<div class="alert alert-info" role="alert" style="text-align:center">Por el momento no hay registros de movimientos de administradores.</div>');
                 }
             }
             else{
