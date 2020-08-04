@@ -19,9 +19,9 @@ CREATE TABLE `actionlog`(
 	`date` DateTime NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci
+
 ENGINE = InnoDB
-AUTO_INCREMENT = 9;
+AUTO_INCREMENT = 1;
 -- -------------------------------------------------------------
 
 
@@ -36,9 +36,9 @@ CREATE TABLE `adminlog`(
 	`action` Text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci
+
 ENGINE = InnoDB
-AUTO_INCREMENT = 2;
+AUTO_INCREMENT = 1;
 -- -------------------------------------------------------------
 
 
@@ -51,7 +51,7 @@ CREATE TABLE `admins`(
 	PRIMARY KEY ( `id` ),
 	CONSTRAINT `username` UNIQUE( `username` ) )
 CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci
+
 ENGINE = InnoDB
 AUTO_INCREMENT = 2;
 -- -------------------------------------------------------------
@@ -65,7 +65,7 @@ CREATE TABLE `allmessages`(
 	`idVoiceBill` Int( 0 ) NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci
+
 ENGINE = InnoDB
 AUTO_INCREMENT = 1;
 -- -------------------------------------------------------------
@@ -73,13 +73,12 @@ AUTO_INCREMENT = 1;
 
 -- CREATE TABLE "bills" ----------------------------------------
 CREATE TABLE `bills`( 
-	`id` Int( 0 ) AUTO_INCREMENT NOT NULL,
+	`id` Int( 0 ) NOT NULL,
 	`quantity` Int( 0 ) NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 1001;
+
+ENGINE = InnoDB;
 -- -------------------------------------------------------------
 
 
@@ -90,7 +89,7 @@ CREATE TABLE `sessions`(
 	`date` DateTime NOT NULL,
 	PRIMARY KEY ( `cookie` ) )
 CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci
+
 ENGINE = InnoDB;
 -- -------------------------------------------------------------
 
@@ -101,7 +100,7 @@ CREATE TABLE `voiceactions`(
 	`recording` Text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci
+
 ENGINE = InnoDB
 AUTO_INCREMENT = 1;
 -- -------------------------------------------------------------
@@ -114,7 +113,7 @@ CREATE TABLE `voicebills`(
 	`idBill` Int( 0 ) NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci
+
 ENGINE = InnoDB
 AUTO_INCREMENT = 1;
 -- -------------------------------------------------------------
@@ -126,7 +125,7 @@ CREATE TABLE `voicenumbers`(
 	`recording` Text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci
+
 ENGINE = InnoDB
 AUTO_INCREMENT = 1;
 -- -------------------------------------------------------------
