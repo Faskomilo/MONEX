@@ -1,3 +1,5 @@
+const sound = new Audio();
+
 $(document).ready(function(){
     let origin = window.location.origin;
 
@@ -38,3 +40,9 @@ $(document).ready(function(){
         }
     })
 });
+
+function playVB(){
+    sound.pause();
+    sound.src = '/static/contents/voicebot/admin_messages.wav';
+    sound.play();
+}

@@ -21,12 +21,55 @@ $(document).ready(function(){
     var origin  = window.location.origin;
     window.location.replace(origin + "/monex/index");
   });
-
+///////////////////////////////////////////////////////////////////////////////// Audios //////
   $('#myModal').on('hidden.bs.modal', function (e) {
     sound.pause();
     sound.src = '/static/contents/voicebot/monex_selectButton.wav';
     sound.play();
-  })
+  });
+
+  $('#btnSuccessCambio').click(function(){
+    sound.pause();
+    sound.src = '/static/contents/voicebot/monex_change.wav';
+    sound.play();
+  });
+
+  $('#modalEnd').click(function(){
+    sound.pause();
+    sound.src = '/static/contents/voicebot/monex_end.wav';
+    sound.play();
+  });
+
+  $('#btnErrorChooseQuantity').click(function(){
+    sound.pause();
+    sound.src = '/static/contents/voicebot/monex_errorChoseQuantity.wav';
+    sound.play();
+  });
+  
+  $('#btnAlertConfirmQuantity').click(function(){
+    sound.pause();
+    sound.src = '/static/contents/voicebot/monex_confirmQuantity.wav';
+    sound.play();
+  });
+
+  $('#btnAlertLoop').click(function(){
+    sound.pause();
+    sound.src = '/static/contents/voicebot/monex_newOperation.wav';
+    sound.play();
+  });
+
+  $('#btnErrorNoChange').click(function(){
+    sound.pause();
+    sound.src = '/static/contents/voicebot/monex_errorNoChange.wav';
+    sound.play();
+  });
+
+  $('#btnErrorFail').click(function(){
+    sound.pause();
+    sound.src = '/static/contents/voicebot/error_systemFailure.wav';
+    sound.play();
+  });
+
 });
 
 function mute(){
@@ -46,14 +89,29 @@ function continueChange(){
   if($('.radio_button').is(':checked'))
   {
     $('#modalAlertContinue').modal('show');
+    if(vbSound == true){
+      sound.pause();
+      sound.src = '/static/contents/voicebot/monex_confirmQuantity.wav';
+      sound.play();
+    }
   }
   else{
     $('#modalErrorUser').modal('show');
+    if(vbSound == true){
+      sound.pause();
+      sound.src = '/static/contents/voicebot/monex_errorChoseQuantity.wav';
+      sound.play();
+    }
   }
 }
 
 function newOperation(){
   $('#modalAlertLoop').modal('show');
+  if(vbSound == true){
+    sound.pause();
+    sound.src = '/static/contents/voicebot/monex_newOperation.wav';
+    sound.play();
+  }
 }
 
 function getChange(){
@@ -74,18 +132,45 @@ function getChange(){
       
       if(this.response.success === "ok"){
         $('#divGivChange').html('<h4>'+ this.response.data +'</h4>');
+
+        $('#modalSuccessCambio').modal('show');
+        if(vbSound == true){
+          sound.pause();
+          sound.src = '/static/contents/voicebot/monex_change.wav';
+          sound.play();
+        }
       }
       else{
-          console.log("Error");
+
+        if(this.response.message == "Not Enough Change"){
+          $('#modalErrorNoChange').modal('show');
+          if(vbSound == true){
+            sound.pause();
+            sound.src = '/static/contents/voicebot/monex_errorNoChange.wav';
+            sound.play();
+          }
+        }
+        else{
+
+          $('#modalErrorFail').modal('show');
+          if(vbSound == true){
+            sound.pause();
+            sound.src = '/static/contents/voicebot/error_systemFailure.wav';
+            sound.play();
+          }
+        }
       }
     }
-  })
-
-  $('#modalSuccessCambio').modal('show');
+  });
 }
 
 function showEnd(){
   $('#modalFin').modal('show');
+  if(vbSound == true){
+    sound.pause();
+    sound.src = '/static/contents/voicebot/monex_end.wav';
+    sound.play();
+  }
 }
 
 function clearRB(){

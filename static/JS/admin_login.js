@@ -1,14 +1,30 @@
+const sound = new Audio();
+vbSound = true;
+
 $(document).ready(function(){
+    if(vbSound == true){
+      sound.pause();
+      sound.src = '/static/contents/voicebot/login_documentReady.wav';
+      sound.play();
+    }
 
     $('#goToIndex').click(function(){
       var origin   = window.location.origin;
       window.location.replace(origin + "/monex/index");
     });
+
+    $('#botAnswer').click(function(){
+      sound.pause();
+      sound.src = '/static/contents/voicebot/login_documentReady.wav';
+      sound.play();
+    });
+
     $('#inputUser').focus(function(){
       $('#errorEmptyUser').hide();
       $('#errorEmptyPasword').hide();
       $("#errorInvalidCredentials").hide();
     })
+
     $('#inputPasword').focus(function(){
       $('#errorEmptyUser').hide();
       $('#errorEmptyPasword').hide();
@@ -26,22 +42,37 @@ $(document).ready(function(){
   function mute(){
     $('#botMute').show();
     $('#botUnmute').hide();
+    sound.pause();
+    vbSound = false;
   }
   
   function unmute(){
     $('#botMute').hide();
     $('#botUnmute').show();
+    vbSound = true;
   }
   
   function continueLog(){
     if($('#inputUser').val() == ''){
       $('#errorEmptyUser').show();
+
+      if(vbSound == true){
+        sound.pause();
+        sound.src = '/static/contents/voicebot/login_errorUsername.wav';
+        sound.play();
+      }
     }
     else{
       $('#errorEmptyUser').hide();
     }
     if($('#inputPasword').val() == ''){
       $('#errorEmptyPasword').show();
+
+      if(vbSound == true){
+        sound.pause();
+        sound.src = '/static/contents/voicebot/login_errorPassword.wav';
+        sound.play();
+      }
     }
     else{
       $('#errorEmptyPasword').hide();
@@ -73,9 +104,22 @@ $(document).ready(function(){
           }
           else{
             $('#errorInvalidCredentials').show();
+
+            if(vbSound == true){
+              sound.pause();
+              sound.src = '/static/contents/voicebot/login_logFailed.wav';
+              sound.play();
+            }
           }
         }
       })
+    }
+    else if($('#inputUser').val() == '' && $('#inputPasword').val() == ''){
+      if(vbSound == true){
+        sound.pause();
+        sound.src = '/static/contents/voicebot/login_errorUserPassword.wav';
+        sound.play();
+      }
     }
   }
   
