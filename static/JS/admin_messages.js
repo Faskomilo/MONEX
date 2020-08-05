@@ -1,3 +1,5 @@
+responsiveVoice.setDefaultVoice("Spanish Latin American Female");
+
 $(document).ready(function(){
     let origin = window.location.origin;
 
@@ -38,3 +40,7 @@ $(document).ready(function(){
         }
     })
 });
+
+function playVB(){
+    responsiveVoice.speak("Apartado de mensajes, aquí podrás observar distintos mensajes los cuáles indican los cambios necesarios a realizar para los recursos de la máquina de cambio.","Spanish Latin American Female");
+}

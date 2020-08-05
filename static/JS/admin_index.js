@@ -1,3 +1,5 @@
+responsiveVoice.setDefaultVoice("Spanish Latin American Female");
+
 $(document).ready(function(){
 
     $('#goToMessages').click(function(){
@@ -30,6 +32,7 @@ $(document).ready(function(){
     var myCookie = getCookie("voiceBot");
     if(myCookie == null){
         unmute();
+        playVB();
     }
     else{
         mute();
@@ -49,7 +52,7 @@ function getCookie(name) {
         begin += 2;
         var end = document.cookie.indexOf(";", begin);
         if (end == -1) {
-        end = dc.length;
+            end = dc.length;
         }
     }
     // because unescape has been deprecated, replaced with decodeURI
@@ -58,14 +61,13 @@ function getCookie(name) {
 } 
 
 function playSound(){
-    const sound = new Audio();
-    sound.src = '/static/contents/voicebot/Bienvenida.wav';
-    sound.play() ;
+    playVB();
 }
 
 function mute(){
     $('#botMute').show();
     $('#botUnmute').hide();
+    responsiveVoice.cancel();
     document.cookie="voiceBot = false";
 }
   

@@ -1,3 +1,5 @@
+responsiveVoice.setDefaultVoice("Spanish Latin American Female");
+
 $(document).ready(function(){   
     let origin = window.location.origin;
 
@@ -38,3 +40,7 @@ $(document).ready(function(){
         }
     })
 });
+
+function playVB(){
+    responsiveVoice.speak("Movimientos de usuarios, aquí podras ver los registros de todos los movimientos realizados por los usuarios.","Spanish Latin American Female");
+}

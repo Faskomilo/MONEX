@@ -1,16 +1,11 @@
 //MONEX_INDEX.HTML
-const sound = new Audio();
 vbSound = true;
+responsiveVoice.setDefaultVoice("Spanish Latin American Female");
 
 $(document).ready(function(){
+  responsiveVoice.speak("Bienvenido o Bienvenida a MONEX. Este sitio web está dedicado para realizar de forma fácil y segura el cambio de tu efectivo. Da click en el botón de Continuar para realizar una operación.","Spanish Latin American Female");
 
   $('#myModal').modal('show');
-
-  sound.src = '/static/contents/voicebot/monex_bienvenida.wav';
-  sound.play();
-
-  $('#myModal').on('shown.bs.modal', function (e) {
-  })
 
   $('#goToLogin').click(function(){
     var origin  = window.location.origin;
@@ -22,17 +17,42 @@ $(document).ready(function(){
     window.location.replace(origin + "/monex/index");
   });
 
+///////////////////////////////////////////////////////////////////////////////// Audios en botónes//////
+
   $('#myModal').on('hidden.bs.modal', function (e) {
-    sound.pause();
-    sound.src = '/static/contents/voicebot/monex_selectButton.wav';
-    sound.play();
-  })
+    responsiveVoice.speak("Por favor, selecciona la cantidad que deseas cambiar.");
+  });
+
+  $('#modalEnd').click(function(){
+    responsiveVoice.speak("Operación finalizada. La operación ha sido completada con éxito y sin ningún problema. Gracias por preferir usar MONEX. Presiona el botón de Inicio para ir a la pantalla de bienvenida o cierra la ventana.");
+  });
+
+  $('#btnErrorChooseQuantity').click(function(){
+    responsiveVoice.speak("Error, Favor de seleccionar una cantidad.");
+  });
+  
+  $('#btnAlertConfirmQuantity').click(function(){
+    responsiveVoice.speak("¿Seguro que desea solicitar cambio de esa cantidad?");
+  });
+
+  $('#btnAlertLoop').click(function(){
+    responsiveVoice.speak("¿Deseas realizar una nueva operación?");
+  });
+
+  $('#btnErrorNoChange').click(function(){
+    responsiveVoice.speak("Lo sentimos, por el momento no disponemos de cambio para esa cantidad.");
+  });
+
+  $('#btnErrorFail').click(function(){
+    responsiveVoice.speak("¡Oops!, Algo falló al realizar la operación, intentalo más tarde.");
+  });
+
 });
 
 function mute(){
   $('#botMute').show();
   $('#botUnmute').hide();
-  sound.pause();
+  responsiveVoice.cancel();
   vbSound = false;
 }
 
@@ -46,14 +66,23 @@ function continueChange(){
   if($('.radio_button').is(':checked'))
   {
     $('#modalAlertContinue').modal('show');
+    if(vbSound == true){
+      responsiveVoice.speak("¿Seguro que desea solicitar cambio de esa cantidad?");
+    }
   }
   else{
     $('#modalErrorUser').modal('show');
+    if(vbSound == true){
+      responsiveVoice.speak("Error, Favor de seleccionar una cantidad.");
+    }
   }
 }
 
 function newOperation(){
   $('#modalAlertLoop').modal('show');
+  if(vbSound == true){
+    responsiveVoice.speak("¿Deseas realizar una nueva operación?");
+  }
 }
 
 function getChange(){
@@ -74,18 +103,45 @@ function getChange(){
       
       if(this.response.success === "ok"){
         $('#divGivChange').html('<h4>'+ this.response.data +'</h4>');
+
+        $('#modalSuccessCambio').modal('show');
+
+        let voiceChange = "";
+        voiceChange = this.response.data.replace("<br/>","");
+
+        if(vbSound == true){
+          responsiveVoice.speak("operación éxitosa, tu cambio es de " + voiceChange);
+        }
+
+        $('#btnSuccessCambio').click(function(){
+          responsiveVoice.speak("operación éxitosa, tu cambio es de " + voiceChange);
+        });
       }
       else{
-          console.log("Error");
+
+        if(this.response.message == "Not Enough Change"){
+          $('#modalErrorNoChange').modal('show');
+          if(vbSound == true){
+            responsiveVoice.speak("Lo sentimos, por el momento no disponemos de cambio para esa cantidad.");
+          }
+        }
+        else{
+
+          $('#modalErrorFail').modal('show');
+          if(vbSound == true){
+            responsiveVoice.speak("¡Oops!, Algo falló al realizar la operación, intentalo más tarde.");
+          }
+        }
       }
     }
-  })
-
-  $('#modalSuccessCambio').modal('show');
+  });
 }
 
 function showEnd(){
   $('#modalFin').modal('show');
+  if(vbSound == true){
+    responsiveVoice.speak("Operación finalizada. La operación ha sido completada con éxito y sin ningún problema. Gracias por preferir usar MONEX. Presiona el botón de Inicio para ir a la pantalla de bienvenida o cierra la ventana.");
+  }
 }
 
 function clearRB(){
@@ -93,11 +149,9 @@ function clearRB(){
 }
 
 function playWellcomeSound(){
-  sound.src = '/static/contents/voicebot/monex_bienvenida.wav';
-  sound.play();
+  responsiveVoice.speak("Bienvenido o Bienvenida a MONEX. Este sitio web está dedicado para realizar de forma fácil y segura el cambio de tu efectivo. Da click en el botón de Continuar para realizar una operación.");
 }
 
 function playSelect(){
-  sound.src = '/static/contents/voicebot/monex_selectButton.wav';
-  sound.play();
+  responsiveVoice.speak("Por favor, selecciona la cantidad que deseas cambiar y posteriormente pulsa el botón de continuar");
 }

@@ -5,7 +5,8 @@
   <script src="/static/libraries/JQuery/dist/jquery.min.js"></script>
   <script src="/static/libraries/Bootstrap 4.5.0/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  
+  <script src="https://code.responsivevoice.org/responsivevoice.js?key=E0lDlfbM"></script>
+
   <link rel="stylesheet" href="/static/libraries/Bootstrap 4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/libraries/fontawesome-free-5.14.0-web/css/all.css">
 
@@ -122,7 +123,7 @@
               <td>
                 <a id="goToLogin" role="button" style="color:grey"><i width="100px" class="fas fa-key fa-2x"></i></a>
               <td style="text-align:right">
-                <button type="button" class="btn btn-dark" onclick="stop();" data-dismiss="modal">Continuar</button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Continuar</button>
               </td>
             </tr>
           </table>
@@ -141,7 +142,7 @@
               <h1>Cambio</h1>
             </div>
             <div class="p-3">
-              <button id="answerDivWellcome" class="questionBot"><i style="color: rgb(0, 72, 139);" class="fas fa-question-circle fa-2x"></i></button>
+              <button id="btnSuccessCambio" class="questionBot"><i style="color: rgb(0, 72, 139);" class="fas fa-question-circle fa-2x"></i></button>
             </div>
           </div>
           <div class="modal-body">
@@ -167,7 +168,7 @@
             <h1>Operación finalizada</h1>
           </div>
            <div class="p-4">
-            <button id="answerDivWellcome" class="questionBot"><i style="color: rgb(0, 72, 139);" class="fas fa-question-circle fa-2x"></i></button>
+            <button id="modalEnd" class="questionBot"><i style="color: rgb(0, 72, 139);" class="fas fa-question-circle fa-2x"></i></button>
           </div>
          </div>
          <br/>
@@ -194,7 +195,7 @@
             <h5>Alerta</h5>
           </div>
            <div class="p-1">
-            <button id="answerDivWellcome" class="questionBot"><i style="color: #887400;" class="fas fa-question-circle"></i></button>
+            <button id="btnAlertLoop" class="questionBot"><i style="color: #887400;" class="fas fa-question-circle"></i></button>
           </div>
         </div>
         <div class="modal-body">
@@ -224,7 +225,7 @@
               <h5>Alerta</h5>
             </div>
              <div class="p-1">
-              <button id="answerDivWellcome" class="questionBot"><i style="color: #887400;" class="fas fa-question-circle"></i></button>
+              <button id="btnAlertConfirmQuantity" class="questionBot"><i style="color: #887400;" class="fas fa-question-circle"></i></button>
             </div>
           </div>
           <div class="modal-body">
@@ -232,7 +233,7 @@
               <div class="col-1">
                   <i style="color: #dbba00;" class="fas fa-exclamation-circle fa-3x"></i>
               </div>
-              <div class="col" style="padding:2%; margin-left: 5%;">
+              <div class="col" style="padding:2%; margin-left:5%;">
                 <p>¿Seguro que desea solicitar cambio de esa cantidad?</p>
               </div>
             </div>
@@ -254,7 +255,7 @@
               <h5>Error</h5>
             </div>
              <div class="p-1">
-              <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+              <button id="btnErrorChooseQuantity" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
             </div>
           </div>
           <div class="modal-body">
@@ -283,7 +284,7 @@
                 <h5>Error</h5>
               </div>
                <div class="p-1">
-                <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+                <button id="btnErrorNoChange" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
               </div>
             </div>
             <div class="modal-body">
@@ -312,7 +313,7 @@
                 <h5>Error</h5>
               </div>
                <div class="p-1">
-                <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+                <button id="btnErrorFail" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
               </div>
             </div>
             <div class="modal-body">

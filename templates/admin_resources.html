@@ -162,6 +162,27 @@
                     </div>
                 </div>
             </div>
+            <div id="marginLR">
+              <div class="row">
+                <div class="col-7">
+                    <div class="jumbotron" style="background-color: rgb(228, 228, 228);">
+                      <h3>Límites de cantidades</h3>
+                      <hr/>
+                        <table id="tableLimits" class="table table-striped">
+                          <thead class="thead-dark">
+                            <tr style="text-align: center;">
+                              <th scope="col">Denominación</th>
+                              <th scope="col">Cantidad mínima</th>
+                              <th scope="col">Cantidad máxima</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbodyLimits">
+                          </tbody>
+                        </table>
+                    </div>
+                </div>  
+              </div>  
+            </div>
         </div>
 
       <!--Modal Alerta, fin de operación-->
@@ -173,7 +194,7 @@
                 <h5>Fin de la opeación</h5>
               </div>
                <div class="p-1">
-                <button id="answerDivWellcome" class="questionBot"><i style="color: #007500;" class="fas fa-question-circle"></i></button>
+                <button id="btnOperationSuccess" class="questionBot"><i style="color: #007500;" class="fas fa-question-circle"></i></button>
               </div>
             </div>
             <div class="modal-body">
@@ -202,7 +223,7 @@
                 <h5>Alerta</h5>
               </div>
                <div class="p-1">
-                <button id="answerDivWellcome" class="questionBot"><i style="color: #887400;" class="fas fa-question-circle"></i></button>
+                <button id="btnAlertWantContinue" class="questionBot"><i style="color: #887400;" class="fas fa-question-circle"></i></button>
               </div>
             </div>
             <div class="modal-body">
@@ -232,7 +253,7 @@
                 <h5>Error</h5>
               </div>
                <div class="p-1">
-                <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+                <button id="btnErrorWrongQuantity" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
               </div>
             </div>
             <div class="modal-body">
@@ -240,8 +261,8 @@
                     <div class="col-1">
                         <i style="color: #e20000;" class="fas fa-times-circle fa-3x"></i>
                     </div>
-                    <div class="col" style="padding:2%; margin-left: 5%;">
-                        <p>Cantidad ingresada incorrecta.</p>
+                    <div class="col" style="padding:1%; margin-left: 5%;">
+                        <p>Cantidad ingresada incorrecta, asegurate de que la cantidad ingresada está dentro de los rangos establecidos en el sistema.</p>
                     </div>
                 </div>
               <p style="text-align:right">
@@ -261,7 +282,7 @@
                 <h5>Error</h5>
               </div>
                <div class="p-1">
-                <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+                <button id="btnErrorChose" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
               </div>
             </div>
             <div class="modal-body">
@@ -290,7 +311,7 @@
                 <h5>Error</h5>
               </div>
                <div class="p-1">
-                <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+                <button id="btnErrorNewQuantity" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
               </div>
             </div>
             <div class="modal-body">
@@ -319,7 +340,7 @@
                 <h5>Error</h5>
               </div>
                <div class="p-1">
-                <button id="answerDivWellcome" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
+                <button id="btnErrorSystem" class="questionBot"><i style="color: #8b0000;" class="fas fa-question-circle"></i></button>
               </div>
             </div>
             <div class="modal-body">
