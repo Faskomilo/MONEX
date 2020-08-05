@@ -1,3 +1,5 @@
+responsiveVoice.setDefaultVoice("Spanish Latin American Female");
+
 $(document).ready(function(){
 
     $('#goToMessages').click(function(){
@@ -65,7 +67,7 @@ function playSound(){
 function mute(){
     $('#botMute').show();
     $('#botUnmute').hide();
-    sound.pause();
+    responsiveVoice.cancel();
     document.cookie="voiceBot = false";
 }
   
