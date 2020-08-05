@@ -23,10 +23,6 @@ $(document).ready(function(){
     responsiveVoice.speak("Por favor, selecciona la cantidad que deseas cambiar.");
   });
 
-  $('#btnSuccessCambio').click(function(){
-    responsiveVoice.speak("Tu cambio");
-  });
-
   $('#modalEnd').click(function(){
     responsiveVoice.speak("Operación finalizada. La operación ha sido completada con éxito y sin ningún problema. Gracias por preferir usar MONEX. Presiona el botón de Inicio para ir a la pantalla de bienvenida o cierra la ventana.");
   });
@@ -109,10 +105,17 @@ function getChange(){
         $('#divGivChange').html('<h4>'+ this.response.data +'</h4>');
 
         $('#modalSuccessCambio').modal('show');
+
+        let voiceChange = "";
+        voiceChange = this.response.data.replace("<br/>","");
+
         if(vbSound == true){
-          let voiceChange = this.response.data.replace("<br/>","");
           responsiveVoice.speak("operación éxitosa, tu cambio es de " + voiceChange);
         }
+
+        $('#btnSuccessCambio').click(function(){
+          responsiveVoice.speak("operación éxitosa, tu cambio es de " + voiceChange);
+        });
       }
       else{
 

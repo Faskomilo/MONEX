@@ -121,7 +121,7 @@ function editTrue(){
                     document.cookie = 'SID =; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
                     document.location.replace(origin+"/monex/index")
                 }          
-                if(this.response.message === "INVALID NEW QUANTITY"){
+                if(this.response.message === "QUANTITY OVER LIMIT"){
                     $('#errorWrongQuantityAdmin').modal('show');
                     var myCookie = getCookie("voiceBot");
                     if(myCookie == null){
