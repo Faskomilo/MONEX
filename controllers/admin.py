@@ -67,6 +67,7 @@ class getResources(Controller):
             success = "ok"
             message = "All Resources"
             data = {}
+            limits = self.getResourceLimits()
             if self.request.method == "POST":
                 success = "ko"
                 message = "INVALID NEW QUANTITY"
@@ -75,7 +76,6 @@ class getResources(Controller):
                     newQuantity = int(request["quantity"])
                     if newQuantity > 0:
                         _billToModify = Bills.get(Bills.id == request["bill"])
-                        limits = self.getResourceLimits()
                         topLimit = int(limits[str(_billToModify.id)]["EXCESS-LIMIT"])
                         bottomLimit = int(limits[str(_billToModify.id)]["SCARCE-LIMIT"])
                         if _billToModify is not None:
@@ -102,13 +102,17 @@ class getResources(Controller):
                             else:
                                 message = "QUANTITY OVER LIMIT"
             allBills = Bills.getAll()
+            data["limits"] = limits
+            quantities ={}
             for row in allBills:
-                data[row.id] = row.quantity
+                quantities[row.id] = row.quantity
+            data["quantities"] = quantities
             json = {
                 "success":success,
                 "message":message,
                 "data":data
             }
+            print(data)
             return json
 
 class getMessages(Controller):
