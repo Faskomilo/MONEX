@@ -1,4 +1,4 @@
-const sound = new Audio();
+responsiveVoice.setDefaultVoice("Spanish Latin American Female");
 
 $(document).ready(function(){
     getQuantities();
@@ -6,39 +6,27 @@ $(document).ready(function(){
 //////////////////////////////////////btn Audios///////////
 
     $('#btnOperationSuccess').click(function(){
-        sound.pause();
-        sound.src = '/static/contents/voicebot/admin_resourcesSuccess.wav';
-        sound.play();
+        responsiveVoice.speak("Operación realizada éxitosamente");
     });
 
     $('#btnAlertWantContinue').click(function(){
-        sound.pause();
-        sound.src = '/static/contents/voicebot/admin_resourcesConfirmModify.wav';
-        sound.play();
+        responsiveVoice.speak("¿Seguro que deseas modificar la cantidad de esa denominación?");
     });
 
     $('#btnErrorWrongQuantity').click(function(){
-        sound.pause();
-        sound.src = '/static/contents/voicebot/admin_errorQuantityOutOfRange.wav';
-        sound.play();
+        responsiveVoice.speak("Cantidad ingresada incorrecta, asegúrate de que la cantidad ingresada esta dentro de los rangos establecidos en del sistema");
     });
 
     $('#btnErrorChose').click(function(){
-        sound.pause();
-        sound.src = '/static/contents/voicebot/monex_errorChoseQuantity.wav';
-        sound.play();
+        responsiveVoice.speak("Error, Favor de seleccionar una denominación.");
     });
 
     $('#btnErrorNewQuantity').click(function(){
-        sound.pause();
-        sound.src = '/static/contents/voicebot/admin_errorResourcesNewDenomination.wav';
-        sound.play();
+        responsiveVoice.speak("Error, favor de ingresar una cantidad para la denominación seleccionada, únicamente valores numéricos positivos");
     });
 
     $('#btnErrorSystem').click(function(){
-        sound.pause();
-        sound.src = '/static/contents/voicebot/error_systemFailure.wav';
-        sound.play();
+        responsiveVoice.speak("¡Oops!, Algo falló al realizar la operación, intentalo más tarde.");
     });
 });
 
@@ -47,9 +35,7 @@ function changeQuantity(){
         $('#modalAlertContinue').modal('show');
         var myCookie = getCookie("voiceBot");
         if(myCookie == null){
-            sound.pause();
-            sound.src = '/static/contents/voicebot/admin_resourcesConfirmModify.wav';
-            sound.play();
+            responsiveVoice.speak("¿Seguro que deseas modificar la cantidad de esa denominación?");
         }
     }
     else if($('#newQuantity').val() == ''){
@@ -57,18 +43,14 @@ function changeQuantity(){
         $('#newQuantity').val('');
         var myCookie = getCookie("voiceBot");
         if(myCookie == null){
-            sound.pause();
-            sound.src = '/static/contents/voicebot/admin_errorResourcesNewDenomination.wav';
-            sound.play();
+            responsiveVoice.speak("Error, favor de ingresar una cantidad para la denominación seleccionada, únicamente valores numéricos positivos");
         }
     }
     else{
         $('#modalErrorChoose').modal('show');
         var myCookie = getCookie("voiceBot");
         if(myCookie == null){
-            sound.pause();
-            sound.src = '/static/contents/voicebot/monex_errorChoseQuantity.wav';
-            sound.play();
+            responsiveVoice.speak("Error, Favor de seleccionar una denominación.");
         }
     }
 }
@@ -131,9 +113,7 @@ function editTrue(){
                 $('#modalAlertOperationSuccess').modal('show');
                 var myCookie = getCookie("voiceBot");
                 if(myCookie == null){
-                    sound.pause();
-                    sound.src = '/static/contents/voicebot/admin_resourcesSuccess.wav';
-                    sound.play();
+                    responsiveVoice.speak("Operación realizada éxitosamente");
                 }
             }
             else{
@@ -145,9 +125,7 @@ function editTrue(){
                     $('#errorWrongQuantityAdmin').modal('show');
                     var myCookie = getCookie("voiceBot");
                     if(myCookie == null){
-                        sound.pause();
-                        sound.src = '/static/contents/voicebot/admin_errorQuantityOutOfRange.wav';
-                        sound.play();
+                        responsiveVoice.speak("Cantidad ingresada incorrecta, asegúrate de que la cantidad ingresada esta dentro de los rangos establecidos del sistema");
                     }
                 }
                 else{
@@ -155,9 +133,7 @@ function editTrue(){
 
                     var myCookie = getCookie("voiceBot");
                     if(myCookie == null){
-                        sound.pause();
-                        sound.src = '/static/contents/voicebot/error_systemFailure.wav';
-                        sound.play();
+                        responsiveVoice.speak("¡Oops!, Algo falló al realizar la operación, intentalo más tarde.");
                     }
                 }
             }
@@ -166,7 +142,5 @@ function editTrue(){
 }
 
 function playVB(){
-    sound.pause();
-    sound.src = '/static/contents/voicebot/admin_resources.wav';
-    sound.play();
+    responsiveVoice.speak("Modificar recursos, aquí podrás modificar los recursos existentes de la máquina de cambio","Spanish Latin American Female");
 }

@@ -1,4 +1,4 @@
-const sound = new Audio();
+responsiveVoice.setDefaultVoice("Spanish Latin American Female");
 
 $(document).ready(function(){
     let origin = window.location.origin;
@@ -42,7 +42,5 @@ $(document).ready(function(){
 });
 
 function playVB(){
-    sound.pause();
-    sound.src = '/static/contents/voicebot/admin_messages.wav';
-    sound.play();
+    responsiveVoice.speak("Apartado de mensajes, aquí podrás observar distintos mensajes los cuáles indican los cambios necesarios a realizar para los recursos de la máquina de cambio.","Spanish Latin American Female");
 }

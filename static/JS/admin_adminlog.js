@@ -1,4 +1,4 @@
-const sound = new Audio();
+responsiveVoice.setDefaultVoice("Spanish Latin American Female");
 
 $(document).ready(function(){
     let origin = window.location.origin;
@@ -47,7 +47,5 @@ $(document).ready(function(){
 });
 
 function playVB(){
-    sound.pause();
-    sound.src = '/static/contents/voicebot/admin_adminLog.wav';
-    sound.play();
+    responsiveVoice.speak("Movimientos de administrador, aquí podras ver los registros de todos los movimientos realizados por los administradores.","Spanish Latin American Female");
 }
