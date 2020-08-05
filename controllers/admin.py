@@ -99,8 +99,8 @@ class getResources(Controller):
                                                             action= action
                                                             )
                                     _newAdminLog.save()
-                        else:
-                            message = "QUANTITY OVER LIMIT"
+                            else:
+                                message = "QUANTITY OVER LIMIT"
             allBills = Bills.getAll()
             for row in allBills:
                 data[row.id] = row.quantity
