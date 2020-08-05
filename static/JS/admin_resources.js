@@ -67,7 +67,17 @@ function getQuantities(){
             this.response = response;
 
             if(this.response.success === "ok"){
-                setQuantities(this.response.data);
+                setQuantities(this.response.data.quantities);
+
+                billsLimits = Object.keys(this.response.data.limits);
+
+                for(let id in billsLimits){
+                    $('#tbodyLimits').append('<tr style="text-align:center">'+
+                                             '<td>'+ billsLimits[id] +'</td>'+
+                                             '<td>'+ this.response.data.limits[billsLimits[id]]["SCARCE-LIMIT"] +'</td>'+
+                                             '<td>'+ this.response.data.limits[billsLimits[id]]["EXCESS-LIMIT"] +'</td>'+
+                                             '</tr>');
+                }
             }
             else{
                 if(this.response.message == "UNAUTHORIZED"){
