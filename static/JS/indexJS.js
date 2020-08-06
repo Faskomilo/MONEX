@@ -85,6 +85,7 @@ function newOperation(){
   }
 }
 
+let voiceChange = "";
 function getChange(){
   let billToExchange = document.querySelector('input[name="selectMoney"]:checked').value;
 
@@ -106,7 +107,7 @@ function getChange(){
 
         $('#modalSuccessCambio').modal('show');
 
-        let voiceChange = "";
+        voiceChange = "";
         voiceChange = this.response.data.replace("<br/>","");
 
         if(vbSound == true){
@@ -114,6 +115,7 @@ function getChange(){
         }
 
         $('#btnSuccessCambio').click(function(){
+          console.log(voiceChange)
           responsiveVoice.speak("operación éxitosa, tu cambio es de " + voiceChange);
         });
       }
