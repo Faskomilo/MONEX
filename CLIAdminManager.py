@@ -23,40 +23,40 @@ class ActionHandler():
                 charList = self.notAllowedSpecialChars()
                 for char in  args.password:
                     if char not in charList:
-                        print("** Error: Caracter en la contraseña no válido: " + char + " **")
+                        print("** Error: Carácter en la contraseña no válido: " + char + " **")
                         sys.exit()
                 for char in  args.username:
                     if char not in charList:
-                        print("** Error: Caracter en el usuario no válido: " + char + " **")
+                        print("** Error: Carácter en el  nombre de usuario no válido: " + char + " **")
                         sys.exit()
                 _newAdmin = Admins.get(Admins.username == args.username)
                 if _newAdmin is None:
                     _password = args.password
                     if len(_password) < 5:
-                        print("** Error: Password must be over 5 characters **")
+                        print("** Error: Las contraseñas deben contener 5 caracteres al menos **")
                         sys.exit()
                     _username = args.NewUsername
                     if len(_username) < 5:
-                        print("** Error: New Username must be over 5 characters **")
+                        print("** Error: Los nombres de usuario deben contener 5 caracteres al menos**")
                         sys.exit()
                     _newAdminPassword = hashlib.sha224(str(args.password).encode('utf-8')).hexdigest()
                     _newAdmin = Admins(username = args.username,
                                     password = _newAdminPassword)
                     if _newAdmin.save():
-                        print("Admin added correctly")
+                        print("Admin agregado corréctamente")
                     else:
-                        print("** Error: Admin could not be added **")
+                        print("** Error: El Admin no pudo ser agregado, inténtelo más tarde **")
                 else:
-                    print("** Error: Admin already exists **")
+                    print("** Error: Ya existe un Admin con ese nombre de usuario **")
             else:
-                print("** Error: Authorizing Admin's username or password does not match any existing one. Please try again **")
+                print("** Error: Nombre de usuario del administrador autorizando no existe. Por favor inténtelo de nuevo **")
         else:
-            print("** Error: Authorizing Admin's username or password does not match any existing one. Please try again **")
+            print("** Error: Nombre de usuario del administrador autorizando no existe. Por favor inténtelo de nuevo **")
 
     def Modify(self, args):
         print("")
         if args.NewPassword is None and args.NewUsername is None:
-            print("** Error: No change selected, missing either -NP(--NewPassword) or -NU(--NewUsername) to modify the Admin **")
+            print("** Error: Ningún cambio seleccionado, se requiere ya sea de \"-NP\"(\"--NewPassword\") o \"-NU\"(--NewUsername)\" o ambos para modificar un administrador **")
             sys.exit()
         _authorizingAdmin = Admins.get(Admins.username == args.AuthorizingUser)
         if _authorizingAdmin is not None and _authorizingAdmin.deleted != 1:
@@ -71,7 +71,7 @@ class ActionHandler():
                     if args.NewPassword is not None:
                         _password = args.NewPassword
                         if len(_password) < 5:
-                            print("** Error: New Password must be over 5 characters **")
+                            print("** Error: Las contraseñas deben contener 5 caracteres al menos **")
                             sys.exit()
                         for char in  args.NewPassword:
                             if char not in charList:
@@ -81,7 +81,7 @@ class ActionHandler():
                     if args.NewUsername is not None:
                         _username = args.NewUsername
                         if len(_username) < 5:
-                            print("** Error: New Username must be over 5 characters **")
+                            print("** Error: Los nombres de usuario deben contener 5 caracteres al menos**")
                             sys.exit()
                         for char in  args.NewUsername:
                             if char not in charList:
@@ -90,15 +90,15 @@ class ActionHandler():
                     _modifyAdmin.username = _username
                     _modifyAdmin.password = _password
                     if _modifyAdmin.save():
-                        print("Admin modified correctly")
+                        print("Admin modificado corréctamente")
                     else:
-                        print("** Error: Admin could not be modified **")
+                        print("** Error: El Admin no pudo ser modificado, inténtelo más tarde **")
                 else:
-                    print("** Error: Admin does not exists **")
+                    print("** Error: El nombre de usuario del Admin a modificar no existe **")
             else:
-                print("** Error: Authorizing Admin's username or password does not match any existing one. Please try again **")
+                print("** Error: Nombre de usuario del administrador autorizando no existe. Por favor inténtelo de nuevo **")
         else:
-            print("** Error: Authorizing Admin's username or password does not match any existing one. Please try again **")
+            print("** Error: Nombre de usuario del administrador autorizando no existe. Por favor inténtelo de nuevo **")
 
 
     def Delete(self, args):
@@ -112,19 +112,19 @@ class ActionHandler():
                 if _deleteAdmin is not None and _deleteAdmin.deleted != 1:
                     _allAdmins = len(Admins.getAll(Admins.deleted == 0))
                     if _allAdmins == 1:
-                        print("** Error: By deleting this admin, the system would be left without a valid Admin, please create another one before deleting it **")
+                        print("** Error: Si se eliminase este administrador, el sistema quedaría sin administradores válidos, por favor cree uno nuevo antes de eliminar este administrador **")
                         sys.exit()
                     _deleteAdmin.deleted = 1
                     if _deleteAdmin.save():
-                        print("Admin deleted correctly")
+                        print("Admin modificado corréctamente")
                     else:
-                        print("** Error: Admin could not be deleted **")
+                        print("** Error: El Admin no pudo ser eliminado, inténtelo más tarde **")
                 else:
-                    print("** Error: Admin does not exists **")
+                    print("** Error: El nombre de usuario del Admin a modificar no existe **")
             else:
-                print("** Error: Authorizing Admin's username or password does not match any existing one. Please try again **")
+                print("** Error: Nombre de usuario del administrador autorizando no existe. Por favor inténtelo de nuevo **")
         else:
-            print("** Error: Authorizing Admin's username or password does not match any existing one. Please try again **")
+            print("** Error: Nombre de usuario del administrador autorizando no existe. Por favor inténtelo de nuevo **")
 
 
 class ArgParser():
@@ -137,24 +137,24 @@ class ArgParser():
 
         parser = argparse.ArgumentParser(prog=self.__args__[0], description = "Añadir, modificar o eliminar un administrador")
         parser.add_argument("AuthorizingUser", metavar="Authorizing_Admin_Username", help="El nombre de usuario del administrador que autorizará la operación")
-        parser.add_argument("AuthorizingPassword", metavar="Authorizing_Admin_Password", help="El nombre de usuario del administrador que autorizará la operación")
+        parser.add_argument("AuthorizingPassword", metavar="Authorizing_Admin_Password", help="La contraseña del administrador que autorizará la operación")
 
-        subparsers = parser.add_subparsers(metavar = "{option}", title= "Available commands", required = True,description="To see how to use each option use : \"" + self.__args__[0] + " {option} -h\" ")
+        subparsers = parser.add_subparsers(metavar = "{option}", title= "Comandos Disponibles", required = True,description="Para ver el uso de cada opción use: \"" + self.__args__[0] + " {option} -h\" ")
         
-        add_parser = subparsers.add_parser("add", description="Add an admin with a username and a password", help="Add a new admin with a given username and a password")
-        add_parser.add_argument("username", metavar="Admin_Username_To_Add", help="The new Username to be added for login")
-        add_parser.add_argument("password", metavar="Admin_Password_To_Add", help="The new Password to be added for login")
+        add_parser = subparsers.add_parser("add", description="Agregue un nuevo administrador con un nuevo nombre de usuario y una contraseña", help="Agregue un nuevo administrador con un nombre de usuario y una contraseña")
+        add_parser.add_argument("username", metavar="Admin_Username_To_Add", help="El nombre de usuario del nuevo administrador")
+        add_parser.add_argument("password", metavar="Admin_Password_To_Add", help="La contraseña del nuevo administrador")
         add_parser.set_defaults(func=ActionHandlerIns.Add)
 
-        modify_parser = subparsers.add_parser("modify", description="Modify an admin's username or password", help="Modify a username, password or both of an existing admin given its name")
-        modify_parser.add_argument("username", metavar="Existant_Admin_Username", help="The Username to be modified")
+        modify_parser = subparsers.add_parser("modify", description="Modifique el nombre de usuario o contraseña de un admin", help="Modifique el nombre de usuario, contraseña o ambos atributos de un administrador ya existente dando su nombre de usuario")
+        modify_parser.add_argument("username", metavar="Existant_Admin_Username", help="El nombre de usuario actual del administrador a modificar")
         options_modify_parser = modify_parser.add_argument_group()
-        options_modify_parser.add_argument("-NU", "--NewUsername", metavar="New_User", help="The new Username for the user")
-        options_modify_parser.add_argument("-NP", "--NewPassword",  metavar="New_Password", help="The new Password for the user")
+        options_modify_parser.add_argument("-NU", "--NewUsername", metavar="New_User", help="El nuevo nombre de usuario del administrador")
+        options_modify_parser.add_argument("-NP", "--NewPassword",  metavar="New_Password", help="La nueva contraseña del administrador")
         modify_parser.set_defaults(func=ActionHandlerIns.Modify)
 
-        delete_parser = subparsers.add_parser("delete", description="Delete an admin", help="Allows to delete an admin")
-        delete_parser.add_argument("username", metavar="Existant_Admin_Username", help="The Username to be deleted")
+        delete_parser = subparsers.add_parser("delete", description="Eliminar un administrador dando su nombre", help="Permite eliminar un administrador")
+        delete_parser.add_argument("username", metavar="Existant_Admin_Username", help="El nombre de usuario del admin a eliminar")
         delete_parser.set_defaults(func=ActionHandlerIns.Delete)
 
         del self.__args__[0]
