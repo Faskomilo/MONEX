@@ -2,6 +2,11 @@ responsiveVoice.setDefaultVoice("Spanish Latin American Female");
 
 $(document).ready(function(){
 
+    let monexIndex = window.location.pathname;
+    if(monexIndex == "/admin/index"){
+        window.location.replace(origin + "/monex/index");
+    }
+
     $('#goToMessages').click(function(){
         var origin = window.location.origin;
         window.location.replace(origin + "/admin/messages");
