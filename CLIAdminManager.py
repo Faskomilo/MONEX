@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import argparse, sys, hashlib, re
 from models.Admins import Admins
 
@@ -35,7 +36,7 @@ class ActionHandler():
                     if len(_password) < 5:
                         print("** Error: Las contraseñas deben contener 5 caracteres al menos **")
                         sys.exit()
-                    _username = args.NewUsername
+                    _username = args.username
                     if len(_username) < 5:
                         print("** Error: Los nombres de usuario deben contener 5 caracteres al menos**")
                         sys.exit()
