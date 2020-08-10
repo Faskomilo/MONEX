@@ -67,7 +67,7 @@ class ActionHandler():
             _password = hashlib.sha224(str(_password).encode('utf-8')).hexdigest()
             if _authorizingAdmin.password  == _password:
                 _modifyAdmin = Admins.get(Admins.username == args.username)
-                if _modifyAdmin is not None or _modifyAdmin.deleted == 0:
+                if _modifyAdmin is not None and _modifyAdmin.deleted == 0:
                     _password = _modifyAdmin.password
                     _username = _modifyAdmin.username
                     charList = self.notAllowedSpecialChars()
