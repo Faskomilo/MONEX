@@ -112,7 +112,6 @@ class getResources(Controller):
                 "message":message,
                 "data":data
             }
-            print(data)
             return json
 
 class getMessages(Controller):

@@ -115,7 +115,6 @@ function getChange(){
         }
 
         $('#btnSuccessCambio').click(function(){
-          console.log(voiceChange)
           responsiveVoice.speak("operación éxitosa, tu cambio es de " + voiceChange);
         });
       }
