@@ -74,33 +74,32 @@ class getResources(Controller):
                 request = self.request.json
                 if self.isInt(request["quantity"]):
                     newQuantity = int(request["quantity"])
-                    if newQuantity > 0:
-                        _billToModify = Bills.get(Bills.id == request["bill"])
-                        topLimit = int(limits[str(_billToModify.id)]["EXCESS-LIMIT"])
-                        bottomLimit = int(limits[str(_billToModify.id)]["SCARCE-LIMIT"])
-                        if _billToModify is not None:
-                            if newQuantity > bottomLimit and newQuantity < topLimit:
-                                _beforeQuantity = _billToModify.quantity
-                                _billToModify.quantity = newQuantity
-                                if _billToModify.save():
-                                    success = "ok"
-                                    message = "UPDATED QUANTITY"
-                                    if newQuantity > _beforeQuantity:
-                                        action = "Aumento de cantidad de denominación"
-                                    elif newQuantity == _beforeQuantity:
-                                        action = "Sin cambios"
-                                    else:
-                                        action = "Disminución de cantidad de denominación"
-                                    _newAdminLog = AdminLog(idAdmin = Authorize.Authorization(False),
-                                                            date =datetime.datetime.utcnow(),
-                                                            idBill=request["bill"],
-                                                            newQuantityBills=newQuantity,
-                                                            beforeQuantityBills=_beforeQuantity,
-                                                            action= action
-                                                            )
-                                    _newAdminLog.save()
-                            else:
-                                message = "QUANTITY OVER LIMIT"
+                    _billToModify = Bills.get(Bills.id == request["bill"])
+                    topLimit = int(limits[str(_billToModify.id)]["EXCESS-LIMIT"])
+                    bottomLimit = int(limits[str(_billToModify.id)]["SCARCE-LIMIT"])
+                    if _billToModify is not None:
+                        if newQuantity > bottomLimit and newQuantity < topLimit:
+                            _beforeQuantity = _billToModify.quantity
+                            _billToModify.quantity = newQuantity
+                            if _billToModify.save():
+                                success = "ok"
+                                message = "UPDATED QUANTITY"
+                                if newQuantity > _beforeQuantity:
+                                    action = "Aumento de cantidad de denominación"
+                                elif newQuantity == _beforeQuantity:
+                                    action = "Sin cambios"
+                                else:
+                                    action = "Disminución de cantidad de denominación"
+                                _newAdminLog = AdminLog(idAdmin = Authorize.Authorization(False),
+                                                        date =datetime.datetime.utcnow(),
+                                                        idBill=request["bill"],
+                                                        newQuantityBills=newQuantity,
+                                                        beforeQuantityBills=_beforeQuantity,
+                                                        action= action
+                                                        )
+                                _newAdminLog.save()
+                        else:
+                            message = "QUANTITY OVER LIMIT"
             allBills = Bills.getAll()
             data["limits"] = limits
             quantities ={}

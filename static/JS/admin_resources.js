@@ -118,7 +118,7 @@ function editTrue(){
             this.response = response;
 
             if(this.response.success === "ok"){
-                setQuantities(this.response.data);
+                setQuantities(this.response.data.quantities);
                 $('#newQuantity').val('');
                 $('#modalAlertOperationSuccess').modal('show');
                 var myCookie = getCookie("voiceBot");
