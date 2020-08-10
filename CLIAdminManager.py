@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import argparse, sys, hashlib, re
 from models.Admins import Admins
+from models.AdminLog import AdminLog
+
 
 class ActionHandler():
 
@@ -65,7 +67,7 @@ class ActionHandler():
             _password = hashlib.sha224(str(_password).encode('utf-8')).hexdigest()
             if _authorizingAdmin.password  == _password:
                 _modifyAdmin = Admins.get(Admins.username == args.username)
-                if _modifyAdmin is not None:
+                if _modifyAdmin is not None or _modifyAdmin.deleted == 0:
                     _password = _modifyAdmin.password
                     _username = _modifyAdmin.username
                     charList = self.notAllowedSpecialChars()
@@ -115,11 +117,15 @@ class ActionHandler():
                     if _allAdmins == 1:
                         print("** Error: Si se eliminase este administrador, el sistema quedaría sin administradores válidos, por favor cree uno nuevo antes de eliminar este administrador **")
                         sys.exit()
-                    _deleteAdmin.deleted = 1
-                    if _deleteAdmin.save():
-                        print("Admin modificado corréctamente")
+                    logsFromAdmin = len(AdminLog.getAll(AdminLog.idAdmin == _deleteAdmin.id))
+                    if logsFromAdmin > 0:
+                        _deleteAdmin.deleted = 1
+                        if _deleteAdmin.save():
+                            print("Admin modificado corréctamente")
+                        else:
+                            print("** Error: El Admin no pudo ser eliminado, inténtelo más tarde **")
                     else:
-                        print("** Error: El Admin no pudo ser eliminado, inténtelo más tarde **")
+                        _deleteAdmin.delete()
                 else:
                     print("** Error: El nombre de usuario del Admin a modificar no existe **")
             else:
